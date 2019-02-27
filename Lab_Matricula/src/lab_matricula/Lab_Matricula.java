@@ -19,6 +19,9 @@ public class Lab_Matricula {
     public static void main(String[] args) {
         // TODO code application logic here
         JOptionPane.showMessageDialog(null, "Hola Mundo");
+        JOptionPane.showMessageDialog(null, "Prueba 1");
+        JOptionPane.showMessageDialog(null, "Prueba 2");
+        JOptionPane.showMessageDialog(null, "Prueba 3");
     }
     
 }
