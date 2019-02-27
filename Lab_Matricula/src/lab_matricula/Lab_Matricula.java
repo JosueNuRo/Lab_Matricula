@@ -5,6 +5,8 @@
  */
 package lab_matricula;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author josue
@@ -16,6 +18,7 @@ public class Lab_Matricula {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JOptionPane.showMessageDialog(null, "Hola Mundo");
     }
     
 }
