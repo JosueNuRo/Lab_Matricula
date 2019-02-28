@@ -5,6 +5,12 @@
  */
 package lab_matricula;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import AccesoADatos.ServicioProfesor;
+import LogicaDeNegocio.Profesor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,10 +24,14 @@ public class Lab_Matricula {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JOptionPane.showMessageDialog(null, "Hola Mundo");
-        JOptionPane.showMessageDialog(null, "Prueba 1");
-        JOptionPane.showMessageDialog(null, "Prueba 2");
-        JOptionPane.showMessageDialog(null, "Prueba 3");
+        ServicioProfesor addProfesor = new ServicioProfesor();
+        try {
+            addProfesor.agregarProfesor(new Profesor ("207490463","Joel Porras Lobo","24442690","joelpl@gmail.com","207490463"));
+        } catch (GlobalException ex) {
+            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
