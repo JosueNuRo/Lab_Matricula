@@ -27,21 +27,103 @@ public class MenuMatricula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_mantenimientoAlumno = new javax.swing.JButton();
+        btn_mantenimientoProfesores = new javax.swing.JButton();
+        btn_mantenimientoCursos = new javax.swing.JButton();
+        btn_mantenimientoCarrera = new javax.swing.JButton();
+        lbl_titulo = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btn_mantenimientoAlumno.setText("Mantenimiento de Alumnos");
+        btn_mantenimientoAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoAlumnoActionPerformed(evt);
+            }
+        });
+
+        btn_mantenimientoProfesores.setText("Mantenimiento de Profesores");
+        btn_mantenimientoProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoProfesoresActionPerformed(evt);
+            }
+        });
+
+        btn_mantenimientoCursos.setText("Mantenimiento de Cursos");
+        btn_mantenimientoCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoCursosActionPerformed(evt);
+            }
+        });
+
+        btn_mantenimientoCarrera.setText("Mantenimiento de Carreras");
+        btn_mantenimientoCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoCarreraActionPerformed(evt);
+            }
+        });
+
+        lbl_titulo.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
+        lbl_titulo.setText("Bienvenido");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(lbl_titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_mantenimientoAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(btn_mantenimientoCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(71, 71, 71)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(lbl_titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_mantenimientoAlumno)
+                    .addComponent(btn_mantenimientoProfesores))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_mantenimientoCursos)
+                    .addComponent(btn_mantenimientoCarrera))
+                .addGap(161, 161, 161))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_mantenimientoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoAlumnoActionPerformed
+        new MantenimientoAlumno().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_mantenimientoAlumnoActionPerformed
+
+    private void btn_mantenimientoProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoProfesoresActionPerformed
+        new MantenimientoProfesor().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_mantenimientoProfesoresActionPerformed
+
+    private void btn_mantenimientoCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoCursosActionPerformed
+        new MantenimientoCurso().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_mantenimientoCursosActionPerformed
+
+    private void btn_mantenimientoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoCarreraActionPerformed
+        new MantenimientoCarrera().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_mantenimientoCarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +161,10 @@ public class MenuMatricula extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_mantenimientoAlumno;
+    private javax.swing.JButton btn_mantenimientoCarrera;
+    private javax.swing.JButton btn_mantenimientoCursos;
+    private javax.swing.JButton btn_mantenimientoProfesores;
+    private javax.swing.JLabel lbl_titulo;
     // End of variables declaration//GEN-END:variables
 }
