@@ -5,17 +5,22 @@
  */
 package Presentacion;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Yenny
  */
-public class MenuMatricula extends javax.swing.JFrame {
+public class MenuMatricula extends JFrame {
 
     /**
      * Creates new form MenuMatricula
      */
     public MenuMatricula() {
         initComponents();
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -84,7 +89,7 @@ public class MenuMatricula extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +160,10 @@ public class MenuMatricula extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuMatricula().setVisible(true);
+                MenuMatricula matricula = new MenuMatricula();
+                matricula.setVisible(true);
+                matricula.setResizable(false);
+                matricula.setLocationRelativeTo(null);
             }
         });
     }

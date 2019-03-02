@@ -45,10 +45,8 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btn_guardar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="txt_telefono_profesor" max="32767" attributes="0"/>
-                      <Component id="txt_cedula_profesor" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="txt_telefono_profesor" alignment="1" max="32767" attributes="0"/>
+                  <Component id="txt_cedula_profesor" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
                   <Component id="txt_nombre_profesor" alignment="0" max="32767" attributes="0"/>
                   <Component id="txt_email_profesor" max="32767" attributes="0"/>
               </Group>

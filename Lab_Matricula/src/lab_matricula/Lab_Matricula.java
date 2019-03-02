@@ -24,14 +24,16 @@ public class Lab_Matricula {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ServicioProfesor addProfesor = new ServicioProfesor();
+        ServicioProfesor profesor = new ServicioProfesor();
+        
+        //AGREGAR PROFESOR
         try {
-            addProfesor.agregarProfesor(new Profesor ("207490463","Joel Porras Lobo","24442690","joelpl@gmail.com","207490463"));
+            profesor.agregarProfesor(new Profesor ("207490463","Joel Porras Lobo","24442690","joelpl@gmail.com","207490463"));
         } catch (GlobalException ex) {
             Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
             Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
-    
 }

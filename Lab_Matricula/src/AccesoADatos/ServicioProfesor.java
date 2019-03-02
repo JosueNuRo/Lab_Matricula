@@ -23,6 +23,7 @@ import oracle.jdbc.internal.OracleTypes;
  */
 public class ServicioProfesor extends Servicio{
     private static final String AGREGAR_PROFESOR = "call add_PROFESORES(?,?,?,?,?)";
+    private static final String MODIFICAR_PROFESOR = "call act_PROFESORES(?,?,?,?,?)";
     
     public void agregarProfesor(Profesor miProfesor) throws GlobalException, NoDataException{
         try {
@@ -60,4 +61,5 @@ public class ServicioProfesor extends Servicio{
             }
         }
     }
+  
 }
