@@ -13,19 +13,19 @@ import oracle.sql.DATE;
  */
 public class Alumno {
     private String id_alumno, nombre_alumno, telefono_alumno, email_alumno, carreras_cod_carr, usuarios_num_ced;
-    private DATE fechaNacimiento;
+    private String fechaNacimiento;
 
     public Alumno() {
         id_alumno = new String();
         nombre_alumno = new String();
         telefono_alumno = new String();
         email_alumno = new String();
-        fechaNacimiento = new DATE();
+        fechaNacimiento = new String();
         carreras_cod_carr = new String();
         usuarios_num_ced = new String();
     }
 
-    public Alumno(String id_alumno, String nombre_alumno, String telefono_alumno, String email_alumno, DATE fechaNacimiento, String carreras_cod_carr, String usuarios_num_ced) {
+    public Alumno(String id_alumno, String nombre_alumno, String telefono_alumno, String email_alumno, String fechaNacimiento, String carreras_cod_carr, String usuarios_num_ced) {
         this.id_alumno = id_alumno;
         this.nombre_alumno = nombre_alumno;
         this.telefono_alumno = telefono_alumno;
@@ -83,11 +83,11 @@ public class Alumno {
         this.usuarios_num_ced = usuarios_num_ced;
     }
 
-    public DATE getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(DATE fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
