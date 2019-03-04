@@ -17,6 +17,7 @@ import LogicaDeNegocio.Curso;
 import LogicaDeNegocio.Profesor;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -81,24 +82,6 @@ public class Lab_Matricula {
 //        } catch (NoDataException ex) {
 //            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        
-
-//        //LISTAR ALUMNO
-//        ServicioAlumno alumno = new ServicioAlumno();
-//        ArrayList<Alumno> listaAlumnos;
-//        listaAlumnos = alumno.listarAlumno();
-//        System.out.println("El total de registros es: " +listaAlumnos.size());
-//        
-//        for (int i = 0; i < listaAlumnos.size(); i++) {
-//            System.out.println("ID: " + listaAlumnos.get(i).getId_alumno());
-//            System.out.println("Nombre: " + listaAlumnos.get(i).getNombre_alumno());
-//            System.out.println("Teléfono: " + listaAlumnos.get(i).getTelefono_alumno());
-//            System.out.println("Email: " + listaAlumnos.get(i).getEmail_alumno());
-//            System.out.println("Fecha de Nacimiento: " + listaAlumnos.get(i).getFechaNacimiento());
-//            System.out.println("Carrera: " + listaAlumnos.get(i).getCarreras_cod_carr());
-//            System.out.println("Usuario: " + listaAlumnos.get(i).getUsuarios_num_ced());
-//        }
-        
         
     }//fin main
 }//fin class
