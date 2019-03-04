@@ -24,7 +24,7 @@ import oracle.jdbc.internal.OracleTypes;
 public class ServicioProfesor extends Servicio{
     private static final String AGREGAR_PROFESOR = "call add_PROFESORES(?,?,?,?,?)";
     private static final String MODIFICAR_PROFESOR = "call act_PROFESORES(?,?,?,?,?)";
-    private static final String ELIMINAR_PROFESOR = "call del_PROFESORES(?)";
+    private static final String ELIMINAR_PROFESOR = "call del_PROFESOR(?)";
     private static final String MOSTRAR_PROFESORES = "call show_PROFESORES()";
     
     public void agregarProfesor(Profesor miProfesor) throws GlobalException, NoDataException{
@@ -83,7 +83,7 @@ public class ServicioProfesor extends Servicio{
             pstmt.setString(5,miProfesor.getUsuario_num_ced());
             boolean resultado = pstmt.execute();
             if (resultado == true) {
-                throw new NoDataException("No se realizo la insercion");
+                throw new NoDataException("No se realizo la actualizacion");
             }
             
         } catch (SQLException e) {

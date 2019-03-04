@@ -16,9 +16,9 @@ import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Curso;
 import LogicaDeNegocio.Profesor;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,7 +29,7 @@ public class Lab_Matricula {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, GlobalException, NoDataException {
         // TODO code application logic here
         ServicioProfesor profesor = new ServicioProfesor();
         ServicioAlumno alumno = new ServicioAlumno();
@@ -40,9 +40,42 @@ public class Lab_Matricula {
         Carrera carr = new Carrera();
         Curso cur = new Curso();
         
-//        //AGREGAR PROFESOR
+//        //MODIFICAR PROFESOR
+//        prof = new Profesor ("207660575","Yenifer Lobo González","24442690","yenlobo.09@gmail.com","207660575");
 //        try {
-//            profesor.agregarProfesor(new Profesor ("207490463","Joel Porras Lobo","24442690","joelpl@gmail.com","207490463"));
+//            profesor.modificarProfesor(prof);
+//        } catch (GlobalException ex) {
+//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (NoDataException ex) {
+//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+
+//        //MODIFICAR ALUMNO
+//        alum = new Alumno ("207650343","Yesy Lobo González","62830488","yesi-dey@gmail.com","16/02/1987","QUI012","207650343");
+//        try {
+//            alumno.modificarAlumno(alum);
+//        } catch (GlobalException ex) {
+//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (NoDataException ex) {
+//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+
+//        //MODIFICAR CARRERA
+//        carr = new Carrera ("ING234","Ingles","Enfasis en traduccion");
+//        try {
+//            carrera.modificarCarrera(carr);
+//        } catch (GlobalException ex) {
+//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (NoDataException ex) {
+//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+//        //MODIFICAR CURSO
+//        cur = new Curso ("ING03","Quimica analitica",4,8);
+//        try {
+//            curso.modificarCurso(cur);
 //        } catch (GlobalException ex) {
 //            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (NoDataException ex) {
@@ -50,48 +83,22 @@ public class Lab_Matricula {
 //        }
         
 
-//        prof = new Profesor ("207490463","Joel Porras Lobo","24442690","joelpl@gmail.com","207490463");
-//         //ELIMINAR PROFESOR
-//        try {
-//            profesor.eliminarProfesor(prof.getId_profesor());
-//        } catch (GlobalException ex) {
-//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (NoDataException ex) {
-//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
+//        //LISTAR ALUMNO
+//        ServicioAlumno alumno = new ServicioAlumno();
+//        ArrayList<Alumno> listaAlumnos;
+//        listaAlumnos = alumno.listarAlumno();
+//        System.out.println("El total de registros es: " +listaAlumnos.size());
+//        
+//        for (int i = 0; i < listaAlumnos.size(); i++) {
+//            System.out.println("ID: " + listaAlumnos.get(i).getId_alumno());
+//            System.out.println("Nombre: " + listaAlumnos.get(i).getNombre_alumno());
+//            System.out.println("Teléfono: " + listaAlumnos.get(i).getTelefono_alumno());
+//            System.out.println("Email: " + listaAlumnos.get(i).getEmail_alumno());
+//            System.out.println("Fecha de Nacimiento: " + listaAlumnos.get(i).getFechaNacimiento());
+//            System.out.println("Carrera: " + listaAlumnos.get(i).getCarreras_cod_carr());
+//            System.out.println("Usuario: " + listaAlumnos.get(i).getUsuarios_num_ced());
 //        }
         
-
-//        //AGREGAR ALUMNO
-//        alum = new Alumno("204180827","Guiselle Gonzalez Barquero","24442690","guis0806@gmail.com","08/06/1965","EIF123","204180827");
-//        try {
-//            alumno.agregarAlumno(alum);
-//        } catch (GlobalException ex) {
-//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (NoDataException ex) {
-//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-
-//        //AGREGAR CARRERA
-//        carr = new Carrera("QUI012","QUIMICA","ENFASIS EN PROCESOS BIOQUIMICOS");
-//        try {
-//            carrera.agregarCarrera(carr);
-//        } catch (GlobalException ex) {
-//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (NoDataException ex) {
-//            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-
-        //AGREGAR CURSO
-        cur = new Curso("CUR08","Quimica organica",3,6);
-        try {
-            curso.agregarCurso(cur);
-        } catch (GlobalException ex) {
-            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoDataException ex) {
-            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
     }//fin main
 }//fin class
