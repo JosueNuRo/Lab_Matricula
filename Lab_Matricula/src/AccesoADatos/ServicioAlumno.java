@@ -24,7 +24,7 @@ public class ServicioAlumno extends Servicio{
     private static final String AGREGAR_ALUMNO = "call add_ALUMNOS(?,?,?,?,?,?,?)";
     private static final String MODIFICAR_ALUMNO = "call act_ALUMNOS(?,?,?,?,?,?,?)";
     private static final String BUSCAR_ALUMNO = "{?=call buscar_ALUMNO(?)}";
-    private static final String MOSTRAR_ALUMNO = "?=call show_ALUMNOS()";
+    private static final String MOSTRAR_ALUMNO = "{?=call list_ALUMNOS()}";
     private static final String ELIMINAR_ALUMNO = "{call del_ALUMNO(?)}";
 
     public ServicioAlumno() {
@@ -135,6 +135,7 @@ public class ServicioAlumno extends Servicio{
                     rs.getString("carreras_codigo_carrera"),
                     rs.getString("usuarios_num_cedula"));
                     coleccion.add(miAlumno);
+                    System.out.println(miAlumno.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){
@@ -226,7 +227,7 @@ public class ServicioAlumno extends Servicio{
                 pstmt = conexion.prepareStatement(ELIMINAR_ALUMNO);
                 pstmt.setString(1, id);
                 int resultado = pstmt.executeUpdate();
-                if (resultado != 0){
+                if (resultado == 0){
                     throw new NoDataException("No se realizo el borrado");
                 }else{
                     System.out.println("\nEliminación Satisfactoria!");

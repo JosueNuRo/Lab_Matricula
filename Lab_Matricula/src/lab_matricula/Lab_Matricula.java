@@ -15,11 +15,14 @@ import LogicaDeNegocio.Alumno;
 import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Curso;
 import LogicaDeNegocio.Profesor;
+import Presentacion.MantenimientoAlumno;
+import Presentacion.MantenimientoCurso;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sun.applet.Main;
 
 /**
  *
@@ -40,6 +43,32 @@ public class Lab_Matricula {
         Alumno alum = new Alumno();
         Carrera carr = new Carrera();
         Curso cur = new Curso();
+        
+//        try{
+//            curso.listarCursos();
+//        }catch(GlobalException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }catch(NoDataException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }
+
+//        //MOSTRAR
+//        try{
+//            alumno.listarAlumnos();
+//        }catch(GlobalException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }catch(NoDataException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }        
+                
+//        try{
+//            profesor.eliminarProfesor("207660575");
+//        }catch(GlobalException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }catch(NoDataException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }
+        
         
 //        //MODIFICAR PROFESOR
 //        prof = new Profesor ("207660575","Yenifer Lobo González","24442690","yenlobo.09@gmail.com","207660575");
@@ -82,6 +111,8 @@ public class Lab_Matricula {
 //        } catch (NoDataException ex) {
 //            Logger.getLogger(Lab_Matricula.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+
+    
         
     }//fin main
 }//fin class

@@ -7,15 +7,23 @@ package AccesoADatos;
 
 import LogicaDeNegocio.Curso;
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import oracle.jdbc.OracleTypes;
 
 /**
  *
  * @author Yenny
  */
 public class ServicioCurso extends Servicio{
-    private static final String AGREGAR_CURRSO = "call add_CURSOS(?,?,?,?)";
-    private static final String MODIFICAR_CURRSO = "call act_CURSOS(?,?,?,?)";
+    private static final String AGREGAR_CURSO = "call add_CURSOS(?,?,?,?)";
+    private static final String MODIFICAR_CURSO = "call act_CURSOS(?,?,?,?)";
+    private static final String MOSTRAR_CURSO = "{?=call list_CURSOS()}";
+    private static final String ELIMINAR_CURSO = "{call del_CURSO(?)}";
+
     
     public void agregarCurso(Curso miCurso) throws GlobalException, NoDataException, SQLException{
         try {
@@ -28,7 +36,7 @@ public class ServicioCurso extends Servicio{
         CallableStatement pstmt=null;
         
         try {
-            pstmt = conexion.prepareCall(AGREGAR_CURRSO);
+            pstmt = conexion.prepareCall(AGREGAR_CURSO);
             pstmt.setString(1,miCurso.getCodigo_curso());
             pstmt.setString(2,miCurso.getNombre_curso());
             pstmt.setInt(3,miCurso.getCreditos());
@@ -64,7 +72,7 @@ public class ServicioCurso extends Servicio{
         CallableStatement pstmt=null;
         
         try {
-            pstmt = conexion.prepareCall(MODIFICAR_CURRSO);
+            pstmt = conexion.prepareCall(MODIFICAR_CURSO);
             pstmt.setString(1,miCurso.getCodigo_curso());
             pstmt.setString(2,miCurso.getNombre_curso());
             pstmt.setInt(3,miCurso.getCreditos());
@@ -88,4 +96,89 @@ public class ServicioCurso extends Servicio{
             }
         }
     }
+    
+    public Collection listarCursos() throws GlobalException, NoDataException {
+        try{
+            conectar();
+        }catch (ClassNotFoundException ex){
+            throw new GlobalException("No se ha localizado el Driver");
+        }catch (SQLException e){
+            throw new NoDataException("La base de datos no se encuentra disponible");
+        }
+        ResultSet rs = null;
+        ArrayList coleccion = new ArrayList();
+        Curso miCurso = null;
+        CallableStatement pstmt = null;
+        try
+        {
+                pstmt = conexion.prepareCall(MOSTRAR_CURSO);
+                pstmt.registerOutParameter(1, OracleTypes.CURSOR);
+                pstmt.execute();
+                rs = (ResultSet)pstmt.getObject(1);
+                while (rs.next()){
+                    miCurso = new Curso(rs.getString("codigo_curso"),
+                    rs.getString("nombre_curso"),
+                    rs.getInt("creditos"),
+                    rs.getInt("horas_semanales"));
+                    coleccion.add(miCurso);
+                    System.out.println(miCurso.toString() + "\n--------------------------------------");
+                }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            throw new GlobalException("Sentencia no valida");
+        }
+        finally {
+            try {
+                if (rs != null){
+                        rs.close();
+                }
+                if (pstmt != null){
+                        pstmt.close();
+                }
+                desconectar();
+            }
+            catch (SQLException e){
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
+        if (coleccion == null || coleccion.size() == 0){
+                throw new NoDataException("No hay datos");
+        }
+        return coleccion;
+    }
+    
+    public void eliminarCurso(String id) throws GlobalException, NoDataException
+	{
+            try{
+               conectar();
+            }catch (ClassNotFoundException e){
+                throw new GlobalException("No se ha localizado el driver");
+            }catch (SQLException e){
+                throw new NoDataException("La base de datos no se encuentra disponible");
+            }
+            PreparedStatement pstmt = null;
+            try{
+                pstmt = conexion.prepareStatement(ELIMINAR_CURSO);
+                pstmt.setString(1, id);
+                int resultado = pstmt.executeUpdate();
+                if (resultado == 0){
+                    throw new NoDataException("No se realizo el borrado");
+                }else{
+                    System.out.println("\nEliminación Satisfactoria!");
+                }
+            }catch (SQLException e){
+                throw new GlobalException("Sentencia no valida");
+            }
+            finally{
+                try{
+                    if (pstmt != null){
+                        pstmt.close();
+                    }
+                    desconectar();
+                }catch (SQLException e){
+                   throw new GlobalException("Estatutos invalidos o nulos");
+                }
+            }
+	}
 }
