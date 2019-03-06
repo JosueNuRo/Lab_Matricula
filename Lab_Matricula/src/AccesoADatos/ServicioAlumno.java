@@ -189,6 +189,7 @@ public class ServicioAlumno extends Servicio{
                 rs.getString("carreras_codigo_carrera"),
                 rs.getString("usuarios_num_cedula"));
                 coleccion.add(miAlumno);
+            System.out.println(miAlumno.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();

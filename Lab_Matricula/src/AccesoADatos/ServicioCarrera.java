@@ -5,6 +5,7 @@
  */
 package AccesoADatos;
 
+import LogicaDeNegocio.Alumno;
 import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Curso;
 import java.sql.CallableStatement;
@@ -24,6 +25,8 @@ public class ServicioCarrera extends Servicio{
     private static final String MODIFICAR_CARRERA = "call act_CARRERAS(?,?,?)";
     private static final String ELIMINAR_CARRERA = "{call del_CARRERA(?)}";
     private static final String MOSTRAR_CARRERA = "{?=call list_CARRERAS()}";
+    private static final String BUSCAR_Carrera = "{?=call buscar_CARRERA(?)}";
+
 
     
     public void agregarCarrera(Carrera miCarrera) throws GlobalException, NoDataException, SQLException{
@@ -180,4 +183,51 @@ public class ServicioCarrera extends Servicio{
         return coleccion;
     }
      
+    public Carrera buscarCarrera(String idBusqueda) throws GlobalException, NoDataException{
+        try{
+            conectar();
+        }catch (ClassNotFoundException e){
+            throw new GlobalException("No se ha localizado el driver");
+        }catch (SQLException e){
+            throw new NoDataException("La base de datos no se encuentra disponible");
+        }
+        ResultSet rs = null;
+        ArrayList coleccion = new ArrayList();
+        Carrera miCarrera = null;
+        CallableStatement pstmt = null;
+        try{
+            pstmt = conexion.prepareCall(BUSCAR_Carrera);
+            pstmt.registerOutParameter(1, OracleTypes.CURSOR);
+            pstmt.setString(2, idBusqueda);
+            pstmt.execute();
+            rs = (ResultSet)pstmt.getObject(1);
+            while (rs.next()){
+                miCarrera = new Carrera(rs.getString("codigo_carrera"),
+                rs.getString("nombre_carrera"),
+                rs.getString("titulo"));
+                coleccion.add(miCarrera);
+            System.out.println(miCarrera.toString() + "\n--------------------------------------");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            throw new GlobalException("Sentencia no valida");
+        }
+        finally{
+            try{
+                if (rs != null){
+                    rs.close();
+                }
+                if (pstmt != null){
+                    pstmt.close();
+                }
+                desconectar();
+            }catch (SQLException e){
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
+        if (coleccion == null || coleccion.size() == 0){
+            throw new NoDataException("No hay datos");
+        }
+        return miCarrera;
+    }
 }//fin class

@@ -52,6 +52,15 @@ public class Lab_Matricula {
 //            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
 //        }
 
+        //LISTAR
+        try{
+            carrera.buscarCarrera("Informatica");
+        }catch(GlobalException ex){
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+        }catch(NoDataException ex){
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+        }
+
 //        //MOSTRAR
 //        try{
 //            alumno.listarAlumnos();

@@ -5,6 +5,7 @@
  */
 package AccesoADatos;
 
+import LogicaDeNegocio.Alumno;
 import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Profesor;
 import java.sql.CallableStatement;
@@ -29,6 +30,8 @@ public class ServicioProfesor extends Servicio{
     private static final String MODIFICAR_PROFESOR = "call act_PROFESORES(?,?,?,?,?)";
     private static final String ELIMINAR_PROFESOR = "call del_PROFESOR(?)";
     private static final String MOSTRAR_PROFESOR = "{?=call list_PROFESORES()}";
+        private static final String BUSCAR_PROFESOR = "{?=call buscar_PROFESOR(?)}";
+
     
     public void agregarProfesor(Profesor miProfesor) throws GlobalException, NoDataException{
         try {
@@ -189,4 +192,54 @@ public class ServicioProfesor extends Servicio{
                 }
             }
 	}
+   
+   public Profesor buscarProfesor(String idBusqueda) throws GlobalException, NoDataException{
+        try{
+            conectar();
+        }catch (ClassNotFoundException e){
+            throw new GlobalException("No se ha localizado el driver");
+        }catch (SQLException e){
+            throw new NoDataException("La base de datos no se encuentra disponible");
+        }
+        ResultSet rs = null;
+        ArrayList coleccion = new ArrayList();
+        Profesor miProfesor = null;
+        CallableStatement pstmt = null;
+        try{
+            pstmt = conexion.prepareCall(BUSCAR_PROFESOR);
+            pstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+            pstmt.setString(2, idBusqueda);
+            pstmt.execute();
+            rs = (ResultSet)pstmt.getObject(1);
+            while (rs.next()){
+                miProfesor = new Profesor(rs.getString("id_profesor"),
+                rs.getString("nombre_profesor"),
+                rs.getString("telefono_profesor"),
+                rs.getString("email_profesor"),
+                rs.getString("usuarios_num_cedula"));
+                coleccion.add(miProfesor);
+                System.out.println(miProfesor.toString() + "\n--------------------------------------");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            throw new GlobalException("Sentencia no valida");
+        }
+        finally{
+            try{
+                if (rs != null){
+                    rs.close();
+                }
+                if (pstmt != null){
+                    pstmt.close();
+                }
+                desconectar();
+            }catch (SQLException e){
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
+        if (coleccion == null || coleccion.size() == 0){
+            throw new NoDataException("No hay datos");
+        }
+        return miProfesor;
+    }
 }//FIN CLASS

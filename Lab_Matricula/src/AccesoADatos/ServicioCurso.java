@@ -5,6 +5,7 @@
  */
 package AccesoADatos;
 
+import LogicaDeNegocio.Alumno;
 import LogicaDeNegocio.Curso;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -23,6 +24,8 @@ public class ServicioCurso extends Servicio{
     private static final String MODIFICAR_CURSO = "call act_CURSOS(?,?,?,?)";
     private static final String MOSTRAR_CURSO = "{?=call list_CURSOS()}";
     private static final String ELIMINAR_CURSO = "{call del_CURSO(?)}";
+        private static final String BUSCAR_CURSO = "{?=call buscar_CURSO(?)}";
+
 
     
     public void agregarCurso(Curso miCurso) throws GlobalException, NoDataException, SQLException{
@@ -181,4 +184,53 @@ public class ServicioCurso extends Servicio{
                 }
             }
 	}
+    
+    public Curso buscarCurso(String idBusqueda) throws GlobalException, NoDataException{
+        try{
+            conectar();
+        }catch (ClassNotFoundException e){
+            throw new GlobalException("No se ha localizado el driver");
+        }catch (SQLException e){
+            throw new NoDataException("La base de datos no se encuentra disponible");
+        }
+        ResultSet rs = null;
+        ArrayList coleccion = new ArrayList();
+        Curso miCurso = null;
+        CallableStatement pstmt = null;
+        try{
+            pstmt = conexion.prepareCall(BUSCAR_CURSO);
+            pstmt.registerOutParameter(1, OracleTypes.CURSOR);
+            pstmt.setString(2, idBusqueda);
+            pstmt.execute();
+            rs = (ResultSet)pstmt.getObject(1);
+            while (rs.next()){
+                miCurso = new Curso(rs.getString("codigo_curso"),
+                rs.getString("nombre_curso"),
+                rs.getInt("creditos"),
+                rs.getInt("horas_semanales"));
+                coleccion.add(miCurso);
+                System.out.println(miCurso.toString() + "\n--------------------------------------");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            throw new GlobalException("Sentencia no valida");
+        }
+        finally{
+            try{
+                if (rs != null){
+                    rs.close();
+                }
+                if (pstmt != null){
+                    pstmt.close();
+                }
+                desconectar();
+            }catch (SQLException e){
+                throw new GlobalException("Estatutos invalidos o nulos");
+            }
+        }
+        if (coleccion == null || coleccion.size() == 0){
+            throw new NoDataException("No hay datos");
+        }
+        return miCurso;
+    }
 }
