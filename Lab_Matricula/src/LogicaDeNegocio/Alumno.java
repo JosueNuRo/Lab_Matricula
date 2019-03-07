@@ -12,10 +12,10 @@ import oracle.sql.DATE;
  * @author Yenny
  */
 public class Alumno {
-    private String id_alumno, nombre_alumno, telefono_alumno, email_alumno, carreras_cod_carr, usuarios_num_ced;
-    private String fechaNacimiento;
+    public String id_alumno, nombre_alumno, telefono_alumno, email_alumno, carreras_cod_carr, usuarios_num_ced;
+    public String fechaNacimiento;
 
-    public Alumno() {
+    public Alumno(){
         id_alumno = new String();
         nombre_alumno = new String();
         telefono_alumno = new String();

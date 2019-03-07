@@ -5,12 +5,16 @@
  */
 package Presentacion;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Control.ControlConsola;
+import LogicaDeNegocio.Alumno;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +22,8 @@ import javax.swing.JOptionPane;
  */
 public class Consola {
     //ATRIBUTOS
+    Alumno alumno = new Alumno();
+    ControlConsola control = new ControlConsola();
     Scanner scanner = new Scanner(System.in);
     BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
     boolean salir = false;
@@ -33,10 +39,10 @@ public class Consola {
     private String codigoCurso,nombreCurso = "";
     private int creditos, horasSemanales = 0;
     
-    public Consola() {
+    public Consola() throws SQLException, IOException, NoDataException, GlobalException{
     }
     
-    public void menuPrincipal() throws IOException{
+    public void menuPrincipal(){
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tSistema de Matrícula Universitaria\n");
@@ -77,7 +83,7 @@ public class Consola {
         }
     }
     
-    public void menuMantAlumno() throws IOException{
+    public void menuMantAlumno(){
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Alumnos\n");
@@ -120,7 +126,7 @@ public class Consola {
         }
     }
     
-    public void menuMantProfesor() throws IOException{
+    public void menuMantProfesor(){
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Profesores\n");
@@ -163,7 +169,7 @@ public class Consola {
         }
     }
     
-    public void menuMantCarrera() throws IOException{
+    public void menuMantCarrera(){
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Carreras\n");
@@ -206,7 +212,7 @@ public class Consola {
         }
     }
     
-    public void menuMantCurso() throws IOException{
+    public void menuMantCurso(){
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Cursos\n");
@@ -249,24 +255,28 @@ public class Consola {
         }
     }
     
-    public void ingresarAlumno() throws IOException{
+    public void ingresarAlumno(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tIngreso de datos del alumno\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el número de cédula: ");
-        idAlumno = teclado.readLine();
-        System.out.print("\nIngrese el nombre: ");
-        nombreAlumno = teclado.readLine();
-        System.out.print("\nIngrese el número de teléfono: ");
-        telefonoAlumno = teclado.readLine();
-        System.out.print("\nIngrese el correo electrónico: ");
-        emailAlumno = teclado.readLine();
-        System.out.print("\nIngrese la fecha de nacimiento en el formato DD/MM/AAAA: ");
-        fechaNacimiento = teclado.readLine();
-        System.out.print("\nIngrese el código de la carrera: ");
-        carreraAlumno = teclado.readLine();
-        usuarioAlumno = idAlumno;
+        try{
+            System.out.print("Ingrese el número de cédula: ");
+            idAlumno = teclado.readLine();
+            System.out.print("\nIngrese el nombre: ");
+            nombreAlumno = teclado.readLine();
+            System.out.print("\nIngrese el número de teléfono: ");
+            telefonoAlumno = teclado.readLine();
+            System.out.print("\nIngrese el correo electrónico: ");
+            emailAlumno = teclado.readLine();
+            System.out.print("\nIngrese la fecha de nacimiento en el formato DD/MM/AAAA: ");
+            fechaNacimiento = teclado.readLine();
+            System.out.print("\nIngrese el código de la carrera: ");
+            carreraAlumno = teclado.readLine();
+            usuarioAlumno = idAlumno;
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
         
         System.out.println("\n*************************************************");
         System.out.println("\n\tDatos del alumno\n");
@@ -278,31 +288,49 @@ public class Consola {
         System.out.println("Fecha de Nacimiento: "+fechaNacimiento);
         System.out.println("Código Carrera: "+carreraAlumno);
         System.out.println("Usuario: "+idAlumno);
+        
+        alumno.setId_alumno(idAlumno);
+        alumno.setNombre_alumno(nombreAlumno);
+        alumno.setTelefono_alumno(telefonoAlumno);
+        alumno.setEmail_alumno(emailAlumno);
+        alumno.setFechaNacimiento(fechaNacimiento);
+        alumno.setCarreras_cod_carr(carreraAlumno);
+        alumno.setUsuarios_num_ced(usuarioAlumno);
+        
+        control.ingresarAlumno(alumno);
     }
     
-    public void eliminarAlumno() throws IOException{
+    public void eliminarAlumno(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tEliminar alumno\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el número de cédula del alumno: ");
-        idAlumno = teclado.readLine();
+        try{
+            System.out.print("Ingrese el número de cédula del alumno: ");
+            idAlumno = teclado.readLine();
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
     }
     
-    public void ingresarProfesor() throws IOException{
+    public void ingresarProfesor(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tIngreso de datos del profesor\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el número de cédula: ");
-        idProfesor = teclado.readLine();
-        System.out.print("\nIngrese el nombre: ");
-        nombreProfesor = teclado.readLine();
-        System.out.print("\nIngrese el número de teléfono: ");
-        telefonoProfesor = teclado.readLine();
-        System.out.print("\nIngrese el correo electrónico: ");
-        emailProfesor = teclado.readLine();
-        usuarioProfesor = idProfesor;
+        try{
+            System.out.print("Ingrese el número de cédula: ");
+            idProfesor = teclado.readLine();
+            System.out.print("\nIngrese el nombre: ");
+            nombreProfesor = teclado.readLine();
+            System.out.print("\nIngrese el número de teléfono: ");
+            telefonoProfesor = teclado.readLine();
+            System.out.print("\nIngrese el correo electrónico: ");
+            emailProfesor = teclado.readLine();
+            usuarioProfesor = idProfesor;
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
         
         System.out.println("\n*************************************************");
         System.out.println("\n\tDatos del profesor\n");
@@ -314,26 +342,34 @@ public class Consola {
         System.out.println("Usuario: "+idProfesor);
     }
     
-    public void eliminarProfesor() throws IOException{
+    public void eliminarProfesor(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tEliminar profesor\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el número de cédula del profesor: ");
-        idProfesor = teclado.readLine();
+        try{
+            System.out.print("Ingrese el número de cédula del profesor: ");
+            idProfesor = teclado.readLine();
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
     }
     
-    public void ingresarCarrera() throws IOException{
+    public void ingresarCarrera(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tIngreso de datos de la carrera\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el código de la carrera: ");
-        codigoCarrera = teclado.readLine();
-        System.out.print("\nIngrese el nombre: ");
-        nombreCarrera = teclado.readLine();
-        System.out.print("\nIngrese el título: ");
-        titulo = teclado.readLine();
+        try{
+            System.out.print("Ingrese el código de la carrera: ");
+            codigoCarrera = teclado.readLine();
+            System.out.print("\nIngrese el nombre: ");
+            nombreCarrera = teclado.readLine();
+            System.out.print("\nIngrese el título: ");
+            titulo = teclado.readLine();
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
         
         System.out.println("\n*************************************************");
         System.out.println("\n\tDatos de la carrera\n");
@@ -343,28 +379,36 @@ public class Consola {
         System.out.println("Título: "+titulo);
     }
     
-    public void eliminarCarrera() throws IOException{
+    public void eliminarCarrera(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tEliminar carrera\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el código de la carrera: ");
-        codigoCarrera = teclado.readLine();
+        try{
+            System.out.print("Ingrese el código de la carrera: ");
+            codigoCarrera = teclado.readLine();
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
     }
     
-    public void ingresarCurso() throws IOException{
+    public void ingresarCurso(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tIngreso de datos del curso\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el código del curso: ");
-        codigoCurso = teclado.readLine();
-        System.out.print("\nIngrese el nombre: ");
-        nombreCurso = teclado.readLine();
-        System.out.print("\nIngrese el número de créditos: ");
-        creditos = Integer.parseInt(teclado.readLine());
-        System.out.print("\nIngrese la cantidad de horas semanales: ");
-        horasSemanales = Integer.parseInt(teclado.readLine());
+        try{
+            System.out.print("Ingrese el código del curso: ");
+            codigoCurso = teclado.readLine();
+            System.out.print("\nIngrese el nombre: ");
+            nombreCurso = teclado.readLine();
+            System.out.print("\nIngrese el número de créditos: ");
+            creditos = Integer.parseInt(teclado.readLine());
+            System.out.print("\nIngrese la cantidad de horas semanales: ");
+            horasSemanales = Integer.parseInt(teclado.readLine());
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
         
         System.out.println("\n*************************************************");
         System.out.println("\n\tDatos del curso\n");
@@ -375,13 +419,17 @@ public class Consola {
         System.out.println("Horas semanales: "+horasSemanales);
     }
     
-    public void eliminarCurso() throws IOException{
+    public void eliminarCurso(){
         System.out.println("\n*************************************************");
         System.out.println("\n\tEliminar curso\n");
         System.out.println("*************************************************");
 
-        System.out.print("Ingrese el código del curso: ");
-        codigoCurso = teclado.readLine();
+        try{
+            System.out.print("Ingrese el código del curso: ");
+            codigoCurso = teclado.readLine();
+        }catch (IOException ex) {
+            System.out.print("Error al leer del teclado");
+        } 
     }
     
 }//fin class
