@@ -15,8 +15,10 @@ import LogicaDeNegocio.Alumno;
 import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Curso;
 import LogicaDeNegocio.Profesor;
+import Presentacion.Consola;
 import Presentacion.MantenimientoAlumno;
 import Presentacion.MantenimientoCurso;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,16 +35,19 @@ public class Lab_Matricula {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException, GlobalException, NoDataException {
+    public static void main(String[] args) throws SQLException, GlobalException, NoDataException, IOException {
         // TODO code application logic here
-        ServicioProfesor profesor = new ServicioProfesor();
-        ServicioAlumno alumno = new ServicioAlumno();
-        ServicioCarrera carrera = new ServicioCarrera();
-        ServicioCurso curso = new ServicioCurso();
-        Profesor prof = new Profesor();
-        Alumno alum = new Alumno();
-        Carrera carr = new Carrera();
-        Curso cur = new Curso();
+//        ServicioProfesor profesor = new ServicioProfesor();
+//        ServicioAlumno alumno = new ServicioAlumno();
+//        ServicioCarrera carrera = new ServicioCarrera();
+//        ServicioCurso curso = new ServicioCurso();
+//        Profesor prof = new Profesor();
+//        Alumno alum = new Alumno();
+//        Carrera carr = new Carrera();
+//        Curso cur = new Curso();
+        
+        Consola miConsola = new Consola();
+        miConsola.menuPrincipal();
         
 //        try{
 //            curso.listarCursos();
@@ -52,14 +57,14 @@ public class Lab_Matricula {
 //            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
 //        }
 
-        //LISTAR
-        try{
-            carrera.buscarCarrera("Informatica");
-        }catch(GlobalException ex){
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
-        }catch(NoDataException ex){
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
-        }
+//        //LISTAR
+//        try{
+//            carrera.buscarCarrera("Informatica");
+//        }catch(GlobalException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }catch(NoDataException ex){
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+//        }
 
 //        //MOSTRAR
 //        try{
