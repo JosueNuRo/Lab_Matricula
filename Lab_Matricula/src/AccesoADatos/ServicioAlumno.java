@@ -105,7 +105,7 @@ public class ServicioAlumno extends Servicio{
         }
     }
     
-    public Collection listarAlumnos() throws GlobalException, NoDataException {
+    public ArrayList listarAlumnos() throws GlobalException, NoDataException {
         try{
             conectar();
         }catch (ClassNotFoundException ex){
@@ -132,7 +132,7 @@ public class ServicioAlumno extends Servicio{
                     rs.getString("carreras_codigo_carrera"),
                     rs.getString("usuarios_num_cedula"));
                     coleccion.add(miAlumno);
-                    System.out.println(miAlumno.toString() + "\n--------------------------------------");
+                    //System.out.println(miAlumno.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){

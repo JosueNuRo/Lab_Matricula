@@ -5,6 +5,10 @@
  */
 package Presentacion;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -111,7 +115,13 @@ public class MenuMatricula extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_mantenimientoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoAlumnoActionPerformed
-        new MantenimientoAlumno().setVisible(true);
+        try {
+            new MantenimientoAlumno().setVisible(true);
+        } catch (GlobalException ex) {
+            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_btn_mantenimientoAlumnoActionPerformed
 

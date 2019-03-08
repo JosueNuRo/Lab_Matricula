@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -46,7 +47,7 @@ public class Consola {
     public Consola() throws SQLException, IOException, NoDataException, GlobalException{
     }
     
-    public void menuPrincipal() throws SQLException{
+    public void menuPrincipal() throws SQLException, GlobalException, NoDataException{
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tSistema de Matrícula Universitaria\n");
@@ -88,7 +89,7 @@ public class Consola {
     }
     
     //Alumno  
-    public void menuMantAlumno() throws SQLException{
+    public void menuMantAlumno() throws SQLException, GlobalException, NoDataException{
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Alumnos\n");
@@ -238,12 +239,25 @@ public class Consola {
         control.modificarAlumno(alumno);
     }
     
-    public void listarAlumnos(){
+    public void listarAlumnos() throws GlobalException, NoDataException{
         System.out.println("\n*************************************************");
         System.out.println("\n\tAlumnos Existentes\n");
         System.out.println("*************************************************");
         
-        control.listarAlumnos();
+        ArrayList<Alumno>lista = control.listarAlumnos();
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println("-------------------------------------------------");
+            System.out.println("\tDatos del alumno ");
+            System.out.println("-------------------------------------------------");
+            System.out.println("Cédula: "+lista.get(i).getId_alumno());
+            System.out.println("Nombre: "+lista.get(i).getNombre_alumno());
+            System.out.println("Teléfono: "+lista.get(i).getTelefono_alumno());
+            System.out.println("Email: "+lista.get(i).getEmail_alumno());
+            System.out.println("Fecha de Nacimiento: "+lista.get(i).getFechaNacimiento());
+            System.out.println("Código de la carrera: "+lista.get(i).getCarreras_cod_carr());
+            System.out.println("Usuario: "+lista.get(i).getUsuarios_num_ced());
+            System.out.println("\n");
+        }
     }
     
     public void buscarAlumno(){
@@ -262,7 +276,7 @@ public class Consola {
     }
     
     //Profesor
-    public void menuMantProfesor() throws SQLException{
+    public void menuMantProfesor() throws SQLException, GlobalException, NoDataException{
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Profesores\n");
@@ -420,7 +434,7 @@ public class Consola {
     }
     
     //Carrera
-    public void menuMantCarrera() throws SQLException{
+    public void menuMantCarrera() throws SQLException, GlobalException, NoDataException{
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Carreras\n");
@@ -563,7 +577,7 @@ public class Consola {
     }
     
     //Curso 
-    public void menuMantCurso() throws SQLException{
+    public void menuMantCurso() throws SQLException, GlobalException, NoDataException{
         while(!salir){
             System.out.println("\n*************************************************");
             System.out.println("\n\tMantenimiento de Cursos\n");

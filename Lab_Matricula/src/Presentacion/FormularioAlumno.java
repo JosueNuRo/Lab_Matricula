@@ -5,8 +5,12 @@
  */
 package Presentacion;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
 import Control.ControlAlumno;
 import LogicaDeNegocio.Alumno;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -212,7 +216,13 @@ public class FormularioAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_email_alumnoActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        new MantenimientoAlumno().setVisible(true);
+        try {
+            new MantenimientoAlumno().setVisible(true);
+        } catch (GlobalException ex) {
+            Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 

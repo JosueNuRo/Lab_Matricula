@@ -5,8 +5,12 @@
  */
 package Presentacion;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
 import Control.ControlAlumno;
+import LogicaDeNegocio.Alumno;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,12 +20,11 @@ import javax.swing.table.DefaultTableModel;
 public class MantenimientoAlumno extends javax.swing.JFrame {
     ControlAlumno control = new ControlAlumno();
     String idBuscar = "";
-    DefaultTableModel tablaAlumno = new DefaultTableModel();
-    
+    DefaultTableModel tablaAlumno = new DefaultTableModel();    
     /**
      * Creates new form MantenimientoAlumno
      */
-    public MantenimientoAlumno() {
+    public MantenimientoAlumno() throws GlobalException, NoDataException {
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
@@ -29,20 +32,30 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         llenarTabla();
     }
     
-    public void llenarTabla(){
-        ArrayList<Object> columna = new ArrayList<Object>();
-        columna.add("Cédula");
-        columna.add("Nombre");
-        columna.add("Teléfono");
-        columna.add("Email");
-        columna.add("Fecha de Nacimiento");
-        columna.add("Código Carrera");
-        columna.add("Usuario");
-        
-        for(Object col : columna){
-            tablaAlumno.addColumn(col);
-        }
+    public void llenarTabla() throws GlobalException, NoDataException{
+        tablaAlumno.addColumn("Cédula");
+        tablaAlumno.addColumn("Nombre");
+        tablaAlumno.addColumn("Teléfono");
+        tablaAlumno.addColumn("Email");
+        tablaAlumno.addColumn("Fecha de Nacimiento");
+        tablaAlumno.addColumn("Código Carrera");
+        tablaAlumno.addColumn("Usuario");
+      
         this.tbl_alumno.setModel(tablaAlumno);
+
+
+        ArrayList<Alumno>lista = control.listarAlumnos();
+        Object[] fila = new Object[tablaAlumno.getColumnCount()];
+        for (int i = 0; i < lista.size(); i++) {
+           fila[0] = lista.get(i).getId_alumno();
+           fila[1] = lista.get(i).getNombre_alumno();
+           fila[2] = lista.get(i).getTelefono_alumno();
+           fila[3] = lista.get(i).getEmail_alumno();
+           fila[4] = lista.get(i).getFechaNacimiento();
+           fila[5] = lista.get(i).getCarreras_cod_carr();
+           fila[6] = lista.get(i).getUsuarios_num_ced();
+           tablaAlumno.addRow(fila);
+        }
     }
 
     /**

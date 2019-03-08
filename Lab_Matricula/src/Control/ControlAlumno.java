@@ -9,6 +9,8 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioAlumno;
 import LogicaDeNegocio.Alumno;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,14 +54,8 @@ public class ControlAlumno {
         }
     }
     
-    public void listarAlumnos(){
-        try {
-            servicioAlumno.listarAlumnos();
-        } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public ArrayList listarAlumnos() throws GlobalException, NoDataException{
+        return servicioAlumno.listarAlumnos();
     }
     
     public void buscarAlumno(String idBuscar){      
