@@ -31,6 +31,7 @@ public class Consola {
     BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
     boolean salir = false;
     int opcion; 
+    String idBuscar = "";
     
     //Atributos Alumno
     private String idAlumno,nombreAlumno,telefonoAlumno,emailAlumno,fechaNacimiento,carreraAlumno,usuarioAlumno = "";
@@ -39,7 +40,7 @@ public class Consola {
     //Atributos Carrera
      private String codigoCarrera,nombreCarrera,titulo = "";
     //Atributos Curso
-    private String codigoCurso,nombreCurso = "",idBuscar;
+    private String codigoCurso,nombreCurso = "";
     private int creditos, horasSemanales = 0;
     
     public Consola() throws SQLException, IOException, NoDataException, GlobalException{
@@ -592,6 +593,7 @@ public class Consola {
                        buscarCurso();
                        break;
                     case 5:
+                       modificarCurso();
                        break;
                     case 6:
                        menuPrincipal();

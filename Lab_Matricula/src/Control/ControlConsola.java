@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 
 
 public class ControlConsola {
+    //Atributos
     ServicioAlumno servicioAlumno = new ServicioAlumno();
     Alumno alumno = new Alumno();
     
@@ -37,6 +38,13 @@ public class ControlConsola {
     public ControlConsola(){
         this.servicioAlumno = new ServicioAlumno();
         this.alumno = new Alumno();
+        this.servicioProfesor = new ServicioProfesor();
+        this.profesor = new Profesor();
+        this.servicioCarrera = new ServicioCarrera();
+        this.carrera = new Carrera();
+        this.servicioCurso = new ServicioCurso();
+        this.curso = new Curso();
+
     }
     //Alumno
     public void ingresarAlumno(Alumno miAlumno){      

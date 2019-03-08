@@ -5,12 +5,19 @@
  */
 package Presentacion;
 
+import Control.ControlAlumno;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Yenny
  */
 public class MantenimientoAlumno extends javax.swing.JFrame {
-
+    ControlAlumno control = new ControlAlumno();
+    String idBuscar = "";
+    DefaultTableModel tablaAlumno = new DefaultTableModel();
+    
     /**
      * Creates new form MantenimientoAlumno
      */
@@ -19,6 +26,23 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         this.setVisible(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        llenarTabla();
+    }
+    
+    public void llenarTabla(){
+        ArrayList<Object> columna = new ArrayList<Object>();
+        columna.add("Cédula");
+        columna.add("Nombre");
+        columna.add("Teléfono");
+        columna.add("Email");
+        columna.add("Fecha de Nacimiento");
+        columna.add("Código Carrera");
+        columna.add("Usuario");
+        
+        for(Object col : columna){
+            tablaAlumno.addColumn(col);
+        }
+        this.tbl_alumno.setModel(tablaAlumno);
     }
 
     /**
@@ -60,6 +84,12 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_alumno);
 
+        txt_buscar_alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_buscar_alumnoActionPerformed(evt);
+            }
+        });
+
         lbl_buscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_buscar.setText("Buscar Alumno:");
 
@@ -91,11 +121,12 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(btn_volver)
                         .addGap(96, 96, 96)
-                        .addComponent(lbl_mantenimientoAlumnos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 34, Short.MAX_VALUE))
+                        .addComponent(lbl_mantenimientoAlumnos)))
+                .addGap(0, 144, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,6 +158,12 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         new MenuMatricula().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void txt_buscar_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscar_alumnoActionPerformed
+        // TODO add your handling code here:
+        idBuscar = txt_buscar_alumno.getText();
+        control.buscarAlumno(idBuscar);
+    }//GEN-LAST:event_txt_buscar_alumnoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar_alumno;
