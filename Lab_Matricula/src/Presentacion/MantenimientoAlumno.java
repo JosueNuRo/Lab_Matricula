@@ -11,6 +11,9 @@ import Control.ControlAlumno;
 import LogicaDeNegocio.Alumno;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,6 +59,10 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
            fila[6] = lista.get(i).getUsuarios_num_ced();
            tablaAlumno.addRow(fila);
         }
+    }
+    
+    public void limpiarTabla(){
+        tablaAlumno.setRowCount(0);
     }
 
     /**
@@ -173,9 +180,27 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void txt_buscar_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscar_alumnoActionPerformed
-        // TODO add your handling code here:
-        idBuscar = txt_buscar_alumno.getText();
-        control.buscarAlumno(idBuscar);
+        try {
+            // TODO add your handling code here:
+            limpiarTabla();
+            idBuscar = txt_buscar_alumno.getText();
+            ArrayList<Alumno>lista = control.buscarAlumno(idBuscar);
+            Object[] fila = new Object[tablaAlumno.getColumnCount()];
+            for (int i = 0; i < lista.size(); i++) {
+                fila[0] = lista.get(i).getId_alumno();
+                fila[1] = lista.get(i).getNombre_alumno();
+                fila[2] = lista.get(i).getTelefono_alumno();
+                fila[3] = lista.get(i).getEmail_alumno();
+                fila[4] = lista.get(i).getFechaNacimiento();
+                fila[5] = lista.get(i).getCarreras_cod_carr();
+                fila[6] = lista.get(i).getUsuarios_num_ced();
+                tablaAlumno.addRow(fila);
+            }
+        } catch (GlobalException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_txt_buscar_alumnoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

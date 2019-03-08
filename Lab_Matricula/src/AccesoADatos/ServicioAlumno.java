@@ -159,7 +159,7 @@ public class ServicioAlumno extends Servicio{
         return coleccion;
     }
     
-    public Alumno buscarAlumno(String idBusqueda) throws GlobalException, NoDataException{
+    public ArrayList buscarAlumno(String idBusqueda) throws GlobalException, NoDataException{
         try{
             conectar();
         }catch (ClassNotFoundException e){
@@ -186,7 +186,7 @@ public class ServicioAlumno extends Servicio{
                 rs.getString("carreras_codigo_carrera"),
                 rs.getString("usuarios_num_cedula"));
                 coleccion.add(miAlumno);
-            System.out.println(miAlumno.toString() + "\n--------------------------------------");
+            //System.out.println(miAlumno.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -208,7 +208,7 @@ public class ServicioAlumno extends Servicio{
         if (coleccion == null || coleccion.size() == 0){
             throw new NoDataException("No hay datos");
         }
-        return miAlumno;
+        return coleccion;
     }
     
     public void eliminarAlumno(String id) throws GlobalException, NoDataException

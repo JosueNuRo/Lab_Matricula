@@ -33,6 +33,7 @@ public class Consola {
     boolean salir = false;
     int opcion; 
     String idBuscar = "";
+    ArrayList<Alumno> listaAlumno;
     
     //Atributos Alumno
     private String idAlumno,nombreAlumno,telefonoAlumno,emailAlumno,fechaNacimiento,carreraAlumno,usuarioAlumno = "";
@@ -244,23 +245,23 @@ public class Consola {
         System.out.println("\n\tAlumnos Existentes\n");
         System.out.println("*************************************************");
         
-        ArrayList<Alumno>lista = control.listarAlumnos();
-        for (int i = 0; i < lista.size(); i++) {
+        listaAlumno = control.listarAlumnos();
+        for (int i = 0; i < listaAlumno.size(); i++) {
             System.out.println("-------------------------------------------------");
             System.out.println("\tDatos del alumno ");
             System.out.println("-------------------------------------------------");
-            System.out.println("Cédula: "+lista.get(i).getId_alumno());
-            System.out.println("Nombre: "+lista.get(i).getNombre_alumno());
-            System.out.println("Teléfono: "+lista.get(i).getTelefono_alumno());
-            System.out.println("Email: "+lista.get(i).getEmail_alumno());
-            System.out.println("Fecha de Nacimiento: "+lista.get(i).getFechaNacimiento());
-            System.out.println("Código de la carrera: "+lista.get(i).getCarreras_cod_carr());
-            System.out.println("Usuario: "+lista.get(i).getUsuarios_num_ced());
+            System.out.println("Cédula: "+listaAlumno.get(i).getId_alumno());
+            System.out.println("Nombre: "+listaAlumno.get(i).getNombre_alumno());
+            System.out.println("Teléfono: "+listaAlumno.get(i).getTelefono_alumno());
+            System.out.println("Email: "+listaAlumno.get(i).getEmail_alumno());
+            System.out.println("Fecha de Nacimiento: "+listaAlumno.get(i).getFechaNacimiento());
+            System.out.println("Código de la carrera: "+listaAlumno.get(i).getCarreras_cod_carr());
+            System.out.println("Usuario: "+listaAlumno.get(i).getUsuarios_num_ced());
             System.out.println("\n");
         }
     }
     
-    public void buscarAlumno(){
+    public void buscarAlumno() throws GlobalException, NoDataException{
         System.out.println("\n*************************************************");
         System.out.println("\n\tBusqueda de alumno\n");
         System.out.println("*************************************************");
@@ -272,7 +273,20 @@ public class Consola {
             System.out.print("Error al leer del teclado");
         } 
         
-        control.buscarAlumno(idBuscar);
+        listaAlumno = control.buscarAlumno(idBuscar);
+        for (int i = 0; i < listaAlumno.size(); i++) {
+            System.out.println("-------------------------------------------------");
+            System.out.println("\tDatos del alumno ");
+            System.out.println("-------------------------------------------------");
+            System.out.println("Cédula: "+listaAlumno.get(i).getId_alumno());
+            System.out.println("Nombre: "+listaAlumno.get(i).getNombre_alumno());
+            System.out.println("Teléfono: "+listaAlumno.get(i).getTelefono_alumno());
+            System.out.println("Email: "+listaAlumno.get(i).getEmail_alumno());
+            System.out.println("Fecha de Nacimiento: "+listaAlumno.get(i).getFechaNacimiento());
+            System.out.println("Código de la carrera: "+listaAlumno.get(i).getCarreras_cod_carr());
+            System.out.println("Usuario: "+listaAlumno.get(i).getUsuarios_num_ced());
+            System.out.println("\n");
+        }
     }
     
     //Profesor

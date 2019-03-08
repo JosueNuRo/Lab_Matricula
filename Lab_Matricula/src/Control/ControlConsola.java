@@ -82,14 +82,8 @@ public class ControlConsola {
         return servicioAlumno.listarAlumnos();
     }
     
-    public void buscarAlumno(String idBuscar){      
-        try {
-            servicioAlumno.buscarAlumno(idBuscar);
-        } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public ArrayList buscarAlumno(String idBuscar) throws GlobalException, NoDataException{      
+        return servicioAlumno.buscarAlumno(idBuscar);
     }
     
     //Profesor

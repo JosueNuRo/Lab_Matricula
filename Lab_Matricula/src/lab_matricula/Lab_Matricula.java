@@ -34,11 +34,11 @@ public class Lab_Matricula {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException, GlobalException, NoDataException, IOException {
-        Consola miConsola = new Consola();
-        miConsola.menuPrincipal();
+//        Consola miConsola = new Consola();
+//        miConsola.menuPrincipal();
         
-//        MenuMatricula miMenu = new MenuMatricula();
-//        miMenu.setVisible(true);   
+        MenuMatricula miMenu = new MenuMatricula();
+        miMenu.setVisible(true);   
     
     }//fin main
 }//fin class
