@@ -5,12 +5,9 @@
  */
 package LogicaDeNegocio;
 
-/**
- *
- * @author Yenny
- */
+
 public class Carrera {
-    private String codigo_carrera, nombre_carrera, titulo;
+    public String codigo_carrera, nombre_carrera, titulo;
 
     public Carrera() {
         codigo_carrera = new String();

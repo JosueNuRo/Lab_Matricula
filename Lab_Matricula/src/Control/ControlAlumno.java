@@ -8,10 +8,7 @@ package Control;
 import AccesoADatos.ServicioAlumno;
 import LogicaDeNegocio.Alumno;
 
-/**
- *
- * @author Yenny
- */
+
 public class ControlAlumno {
     ServicioAlumno servicioAlumno = new ServicioAlumno();
     Alumno alumno = new Alumno();

@@ -16,10 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import oracle.jdbc.OracleTypes;
 
-/**
- *
- * @author Yenny
- */
+
 public class ServicioAlumno extends Servicio{
     private static final String AGREGAR_ALUMNO = "call add_ALUMNOS(?,?,?,?,?,?,?)";
     private static final String MODIFICAR_ALUMNO = "call act_ALUMNOS(?,?,?,?,?,?,?)";

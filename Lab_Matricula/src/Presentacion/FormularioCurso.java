@@ -5,15 +5,19 @@
  */
 package Presentacion;
 
-/**
- *
- * @author josue
- */
+import Control.ControlConsola;
+import LogicaDeNegocio.Curso;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
 public class FormularioCurso extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormularioCurso
-     */
+    ControlConsola control = new ControlConsola();
+    Curso curso = new Curso();
+    
     public FormularioCurso() {
         initComponents();
         this.setVisible(true);
@@ -53,11 +57,21 @@ public class FormularioCurso extends javax.swing.JFrame {
         });
 
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Agregar Curso");
 
         btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
 
         lbl_codigo.setText("Codigo:");
 
@@ -172,6 +186,26 @@ public class FormularioCurso extends javax.swing.JFrame {
         new MantenimientoCurso().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        curso.setCodigo_curso(txt_codigo_curso.getText());
+        curso.setNombre_curso(txt_nombre_curso.getText());
+        curso.setCreditos(Integer.parseInt(txt_creditos_curso.getText()));
+        curso.setHoras_semanales(Integer.parseInt(txt_horasSemanales_curso.getText()));
+        
+        try {
+            control.ingresarCurso(curso);
+        } catch (SQLException ex) {
+            Logger.getLogger(FormularioCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txt_codigo_curso.setText("");
+        txt_nombre_curso.setText("");
+        txt_creditos_curso.setText("");
+        txt_horasSemanales_curso.setText("");
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar;

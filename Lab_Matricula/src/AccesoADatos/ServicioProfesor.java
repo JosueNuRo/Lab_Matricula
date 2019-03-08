@@ -21,10 +21,7 @@ import java.util.Collection;
 import oracle.jdbc.internal.OracleTypes;
 
 
-/**
- *
- * @author Yenny
- */
+
 public class ServicioProfesor extends Servicio{
     private static final String AGREGAR_PROFESOR = "call add_PROFESORES(?,?,?,?,?)";
     private static final String MODIFICAR_PROFESOR = "call act_PROFESORES(?,?,?,?,?)";
@@ -241,5 +238,9 @@ public class ServicioProfesor extends Servicio{
             throw new NoDataException("No hay datos");
         }
         return miProfesor;
+    }
+
+    public void modificarProfesor(Carrera miCarrera) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }//FIN CLASS

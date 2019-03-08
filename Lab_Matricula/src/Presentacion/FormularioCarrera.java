@@ -5,15 +5,21 @@
  */
 package Presentacion;
 
+import Control.ControlConsola;
+import LogicaDeNegocio.Carrera;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author josue
  */
 public class FormularioCarrera extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormularioCarrera
-     */
+    ControlConsola control = new ControlConsola();
+    Carrera carrera = new Carrera();
+    
     public FormularioCarrera() {
         initComponents();
         this.setVisible(true);
@@ -69,11 +75,21 @@ public class FormularioCarrera extends javax.swing.JFrame {
         });
 
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Agregar Carrera");
 
         btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
 
         btn_volver.setText("Volver");
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +171,24 @@ public class FormularioCarrera extends javax.swing.JFrame {
     private void txt_nombre_carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombre_carreraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombre_carreraActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        carrera.setCodigo_carrera(txt_codigo_carrera.getText());
+        carrera.setNombre_carrera(txt_nombre_carrera.getText());
+        carrera.setTitulo(txt_titulo_carrera.getText());
+        
+        try {
+            control.ingresarCarrera(carrera);
+        } catch (SQLException ex) {
+            Logger.getLogger(FormularioCarrera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txt_codigo_carrera.setText("");
+        txt_nombre_carrera.setText("");
+        txt_titulo_carrera.setText("");
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar;

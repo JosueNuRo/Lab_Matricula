@@ -5,15 +5,18 @@
  */
 package Presentacion;
 
+import Control.ControlConsola;
+import LogicaDeNegocio.Alumno;
+
 /**
  *
  * @author josue
  */
 public class FormularioAlumno extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormularioAlumno
-     */
+    ControlConsola control = new ControlConsola();
+    Alumno alumno = new Alumno();
+    
     public FormularioAlumno() {
         initComponents();
         this.setVisible(true);
@@ -44,6 +47,8 @@ public class FormularioAlumno extends javax.swing.JFrame {
         lbl_nacimiento = new javax.swing.JLabel();
         txt_nacimiento_alumno = new javax.swing.JTextField();
         btn_volver = new javax.swing.JButton();
+        lbl_codigoCarrera = new javax.swing.JLabel();
+        txt_codigoCarrera_alumno1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,11 +80,21 @@ public class FormularioAlumno extends javax.swing.JFrame {
         });
 
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Agregar Alumno");
 
         btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
 
         lbl_nacimiento.setText("Fecha de Nacimiento:");
 
@@ -87,6 +102,14 @@ public class FormularioAlumno extends javax.swing.JFrame {
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverActionPerformed(evt);
+            }
+        });
+
+        lbl_codigoCarrera.setText("Codigo de carrera:");
+
+        txt_codigoCarrera_alumno1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codigoCarrera_alumno1ActionPerformed(evt);
             }
         });
 
@@ -102,24 +125,30 @@ public class FormularioAlumno extends javax.swing.JFrame {
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lbl_telefono)
-                        .addComponent(lbl_email, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_nombre, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_cedula, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(lbl_nacimiento))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_limpiar)
+                        .addComponent(lbl_codigoCarrera)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_codigoCarrera_alumno1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lbl_telefono)
+                                .addComponent(lbl_email, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_cedula, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(lbl_nacimiento))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_guardar))
-                    .addComponent(txt_email_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nacimiento_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_telefono_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nombre_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_cedula_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_limpiar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_guardar))
+                            .addComponent(txt_email_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nacimiento_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_telefono_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nombre_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cedula_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,13 +176,17 @@ public class FormularioAlumno extends javax.swing.JFrame {
                     .addComponent(txt_email_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_codigoCarrera)
+                    .addComponent(txt_codigoCarrera_alumno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nacimiento)
                     .addComponent(txt_nacimiento_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar)
                     .addComponent(btn_limpiar))
-                .addGap(33, 33, 33))
+                .addContainerGap())
         );
 
         pack();
@@ -176,17 +209,44 @@ public class FormularioAlumno extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        alumno.setId_alumno(txt_cedula_alumno.getText());
+        alumno.setNombre_alumno(txt_nombre_alumno.getText());
+        alumno.setTelefono_alumno(txt_telefono_alumno.getText());
+        alumno.setEmail_alumno(txt_email_alumno.getText());
+        alumno.setCarreras_cod_carr(txt_codigoCarrera_alumno1.getText());
+        alumno.setFechaNacimiento(txt_nacimiento_alumno.getText());
+        alumno.setUsuarios_num_ced(txt_cedula_alumno.getText());
+        
+        control.ingresarAlumno(alumno);
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void txt_codigoCarrera_alumno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoCarrera_alumno1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codigoCarrera_alumno1ActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txt_cedula_alumno.setText("");
+        txt_nombre_alumno.setText("");
+        txt_telefono_alumno.setText("");
+        txt_email_alumno.setText("");
+        txt_codigoCarrera_alumno1.setText("");
+        txt_nacimiento_alumno.setText("");
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_cedula;
+    private javax.swing.JLabel lbl_codigoCarrera;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_nacimiento;
     private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_telefono;
     private javax.swing.JTextField txt_cedula_alumno;
+    private javax.swing.JTextField txt_codigoCarrera_alumno1;
     private javax.swing.JTextField txt_email_alumno;
     private javax.swing.JTextField txt_nacimiento_alumno;
     private javax.swing.JTextField txt_nombre_alumno;

@@ -7,10 +7,7 @@ package LogicaDeNegocio;
 
 import oracle.sql.DATE;
 
-/**
- *
- * @author Yenny
- */
+
 public class Alumno {
     public String id_alumno, nombre_alumno, telefono_alumno, email_alumno, carreras_cod_carr, usuarios_num_ced;
     public String fechaNacimiento;

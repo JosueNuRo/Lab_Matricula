@@ -5,15 +5,18 @@
  */
 package Presentacion;
 
+import Control.ControlConsola;
+import LogicaDeNegocio.Profesor;
+
 /**
  *
  * @author josue
  */
 public class FormularioProfesor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormularioProfesor
-     */
+    ControlConsola control = new ControlConsola();
+    Profesor profesor = new Profesor();
+    
     public FormularioProfesor() {
         initComponents();
         this.setVisible(true);
@@ -76,8 +79,18 @@ public class FormularioProfesor extends javax.swing.JFrame {
         });
 
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
 
         btn_volver.setText("Volver");
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +122,8 @@ public class FormularioProfesor extends javax.swing.JFrame {
                         .addComponent(btn_limpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_guardar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txt_telefono_profesor)
-                        .addComponent(txt_cedula_profesor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_telefono_profesor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_cedula_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_nombre_profesor)
                     .addComponent(txt_email_profesor))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -165,6 +177,23 @@ public class FormularioProfesor extends javax.swing.JFrame {
         new MantenimientoProfesor().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        profesor.setId_profesor(txt_cedula_profesor.getText());
+        profesor.setNombre_profesor(txt_nombre_profesor.getText());
+        profesor.setTelefono_profesor(txt_telefono_profesor.getText());
+        profesor.setEmail_profesor(txt_email_profesor.getText());
+        profesor.setUsuario_num_ced(txt_cedula_profesor.getText());
+        
+        control.ingresarProfesor(profesor);
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txt_cedula_profesor.setText("");
+        txt_nombre_profesor.setText("");
+        txt_telefono_profesor.setText("");
+        txt_email_profesor.setText("");
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar;

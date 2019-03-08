@@ -5,10 +5,9 @@
  */
 package LogicaDeNegocio;
 
-/**
- *
- * @author Yenny
- */
+import javax.swing.JTextField;
+
+
 public class Curso {
     private String codigo_curso, nombre_curso;
     private int creditos, horas_semanales;
@@ -63,5 +62,4 @@ public class Curso {
     public String toString() {
         return "Curso{" + "codigo_curso=" + codigo_curso + ", nombre_curso=" + nombre_curso + ", creditos=" + creditos + ", horas_semanales=" + horas_semanales + '}';
     }
-    
 }

@@ -18,6 +18,7 @@ import LogicaDeNegocio.Profesor;
 import Presentacion.Consola;
 import Presentacion.MantenimientoAlumno;
 import Presentacion.MantenimientoCurso;
+import Presentacion.MenuMatricula;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,10 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import sun.applet.Main;
 
-/**
- *
- * @author josue
- */
+
 public class Lab_Matricula {
 
     /**
@@ -46,8 +44,10 @@ public class Lab_Matricula {
 //        Carrera carr = new Carrera();
 //        Curso cur = new Curso();
         
-        Consola miConsola = new Consola();
-        miConsola.menuPrincipal();
+       // Consola miConsola = new Consola();
+       // miConsola.menuPrincipal();
+        MenuMatricula miMenu = new MenuMatricula();
+        miMenu.setVisible(true);
         
 //        try{
 //            curso.listarCursos();
@@ -57,7 +57,7 @@ public class Lab_Matricula {
 //            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
 //        }
 
-//        //LISTAR
+//        //Buscar
 //        try{
 //            carrera.buscarCarrera("Informatica");
 //        }catch(GlobalException ex){

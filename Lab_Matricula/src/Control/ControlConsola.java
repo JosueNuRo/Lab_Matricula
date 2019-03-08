@@ -8,27 +8,233 @@ package Control;
 import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioAlumno;
+import AccesoADatos.ServicioCarrera;
+import AccesoADatos.ServicioCurso;
+import AccesoADatos.ServicioProfesor;
 import LogicaDeNegocio.Alumno;
+import LogicaDeNegocio.Carrera;
+import LogicaDeNegocio.Curso;
+import LogicaDeNegocio.Profesor;
 import Presentacion.Consola;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Yenny
- */
+
 public class ControlConsola {
     ServicioAlumno servicioAlumno = new ServicioAlumno();
     Alumno alumno = new Alumno();
+    
+    ServicioProfesor servicioProfesor = new ServicioProfesor();
+    Profesor profesor = new Profesor();
+    
+    ServicioCarrera servicioCarrera = new ServicioCarrera();
+    Carrera carrera = new Carrera();
+    
+    ServicioCurso servicioCurso = new ServicioCurso();
+    Curso curso = new Curso();
 
     public ControlConsola(){
         this.servicioAlumno = new ServicioAlumno();
         this.alumno = new Alumno();
     }
-    
+    //Alumno
     public void ingresarAlumno(Alumno miAlumno){      
         try {
             servicioAlumno.agregarAlumno(miAlumno);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void eliminarAlumno(String idAlumno){      
+        try {
+            servicioAlumno.eliminarAlumno(idAlumno);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void modificarAlumno(Alumno miAlumno){      
+        try {
+            servicioAlumno.modificarAlumno(miAlumno);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void listarAlumnos(){
+        try {
+            servicioAlumno.listarAlumnos();
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscarAlumno(String idBuscar){      
+        try {
+            servicioAlumno.buscarAlumno(idBuscar);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //Profesor
+    public void ingresarProfesor(Profesor miProfesor){      
+        try {
+            servicioProfesor.agregarProfesor(miProfesor);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void eliminarProfesor(String idProfesor){      
+        try {
+            servicioProfesor.eliminarProfesor(idProfesor);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void modificarProfesor(Profesor miProfesor){      
+        try {
+            servicioProfesor.modificarProfesor(miProfesor);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void listarProfesores(){
+        try {
+            servicioProfesor.listarProfesores();
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscarProfesor(String idBuscar){      
+        try {
+            servicioProfesor.buscarProfesor(idBuscar);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //Carrera
+    public void ingresarCarrera(Carrera miCarrera) throws SQLException{      
+        try {
+            servicioCarrera.agregarCarrera(miCarrera);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void eliminarCarrera(String codigoCarrera){      
+        try {
+            servicioCarrera.eliminarCarrera(codigoCarrera);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void modificarCarrera(Carrera miCarrera) throws SQLException{      
+        try {
+            servicioCarrera.modificarCarrera(miCarrera);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void listarCarreras(){
+        try {
+            servicioCarrera.listarCarreras();
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscarCarrera(String idBuscar){      
+        try {
+            servicioCarrera.buscarCarrera(idBuscar);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //Curso
+    public void ingresarCurso(Curso miCurso) throws SQLException{      
+        try {
+            servicioCurso.agregarCurso(miCurso);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void eliminarCurso(String codigoCurso){      
+        try {
+            servicioCurso.eliminarCurso(codigoCurso);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void modificarCurso(Curso miCurso) throws SQLException{      
+        try {
+            servicioCurso.modificarCurso(miCurso);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void listarCurso(){
+        try {
+            servicioCurso.listarCursos();
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscarCurso(String idBuscar){      
+        try {
+            servicioCurso.buscarCurso(idBuscar);
         } catch (GlobalException ex) {
             Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {

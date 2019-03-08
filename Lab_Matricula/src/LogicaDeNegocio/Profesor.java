@@ -5,12 +5,9 @@
  */
 package LogicaDeNegocio;
 
-/**
- *
- * @author Yenny
- */
+
 public class Profesor {
-    private String id_profesor, nombre_profesor, telefono_profesor, email_profesor,usuario_num_ced;
+    public String id_profesor, nombre_profesor, telefono_profesor, email_profesor,usuario_num_ced;
 
     public Profesor() {
         id_profesor = new String();

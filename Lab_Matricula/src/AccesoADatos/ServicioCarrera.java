@@ -16,10 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import oracle.jdbc.OracleTypes;
 
-/**
- *
- * @author Yenny
- */
+
 public class ServicioCarrera extends Servicio{
     private static final String AGREGAR_CARRERA = "call add_CARRERAS(?,?,?)";
     private static final String MODIFICAR_CARRERA = "call act_CARRERAS(?,?,?)";

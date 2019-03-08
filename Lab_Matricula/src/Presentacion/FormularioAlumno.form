@@ -32,27 +32,36 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="lbl_telefono" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_email" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_cedula" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="lbl_nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btn_limpiar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btn_guardar" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_codigoCarrera" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="txt_codigoCarrera_alumno1" min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="txt_email_alumno" min="-2" pref="146" max="-2" attributes="0"/>
-                  <Component id="txt_nacimiento_alumno" min="-2" pref="146" max="-2" attributes="0"/>
-                  <Component id="txt_telefono_alumno" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                  <Component id="txt_nombre_alumno" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                  <Component id="txt_cedula_alumno" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="lbl_telefono" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_email" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_cedula" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lbl_nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btn_limpiar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btn_guardar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txt_email_alumno" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txt_nacimiento_alumno" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txt_telefono_alumno" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="txt_nombre_alumno" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txt_cedula_alumno" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -88,15 +97,20 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_codigoCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_codigoCarrera_alumno1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbl_nacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_nacimiento_alumno" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_guardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -146,6 +160,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_guardarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -159,6 +176,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_nacimiento">
       <Properties>
@@ -173,6 +193,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_volverActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_codigoCarrera">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Codigo de carrera:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_codigoCarrera_alumno1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_codigoCarrera_alumno1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
