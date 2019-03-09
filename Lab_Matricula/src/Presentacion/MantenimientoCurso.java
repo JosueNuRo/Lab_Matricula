@@ -5,20 +5,28 @@
  */
 package Presentacion;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Control.ControlCurso;
+import LogicaDeNegocio.Curso;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Yenny
  */
 public class MantenimientoCurso extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MantenimientoCurso
-     */
-    public MantenimientoCurso() {
+    ControlCurso control = new ControlCurso();
+    DefaultTableModel tablaCurso= new DefaultTableModel(); 
+    
+    public MantenimientoCurso() throws GlobalException, NoDataException {
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); 
+        llenarTabla();
     }
 
     /**
@@ -37,6 +45,7 @@ public class MantenimientoCurso extends javax.swing.JFrame {
         lbl_buscar = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoCursos = new javax.swing.JLabel();
+        btn_borrarCurso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +67,11 @@ public class MantenimientoCurso extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbl_curso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_cursoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_curso);
 
         lbl_buscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -73,6 +87,13 @@ public class MantenimientoCurso extends javax.swing.JFrame {
         lbl_mantenimientoCursos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_mantenimientoCursos.setText("Mantenimiento de Cursos");
 
+        btn_borrarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
+        btn_borrarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarCursoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,12 +102,15 @@ public class MantenimientoCurso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl_buscar)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_buscar_curso, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_agregar_curso)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_agregar_curso)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_borrarCurso))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btn_volver)
@@ -108,10 +132,15 @@ public class MantenimientoCurso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_buscar_curso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_buscar))
-                .addGap(29, 29, 29)
-                .addComponent(btn_agregar_curso)
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btn_agregar_curso))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_borrarCurso)))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
@@ -128,8 +157,42 @@ public class MantenimientoCurso extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
+    public void llenarTabla() throws GlobalException, NoDataException{
+        tablaCurso.addColumn("Código");
+        tablaCurso.addColumn("Nombre");
+        tablaCurso.addColumn("Creditos");
+        tablaCurso.addColumn("Horas Semanales");
+      
+        this.tbl_curso.setModel(tablaCurso);
+
+
+        ArrayList<Curso>lista = control.listarCurso();
+        Object[] fila = new Object[tablaCurso.getColumnCount()];
+        for (int i = 0; i < lista.size(); i++) {
+           fila[0] = lista.get(i).getCodigo_curso();
+           fila[1] = lista.get(i).getNombre_curso();
+           fila[2] = lista.get(i).getCreditos();
+           fila[3] = lista.get(i).getHoras_semanales();
+           tablaCurso.addRow(fila);
+        }
+    }
+    
+    public void limpiarTabla(){
+        tablaCurso.setRowCount(0);
+    }
+    
+    private void btn_borrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarCursoActionPerformed
+
+    }//GEN-LAST:event_btn_borrarCursoActionPerformed
+
+    private void tbl_cursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_cursoMouseClicked
+        int seleccion = tbl_curso.rowAtPoint(evt.getPoint());
+        control.eliminarCurso((String) tbl_curso.getValueAt(seleccion,0));
+    }//GEN-LAST:event_tbl_cursoMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar_curso;
+    private javax.swing.JButton btn_borrarCurso;
     private javax.swing.JButton btn_volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;

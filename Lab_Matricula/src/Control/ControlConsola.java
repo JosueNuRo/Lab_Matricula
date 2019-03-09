@@ -137,6 +137,8 @@ public class ControlConsola {
         }
     }
     
+    
+    
     //Carrera
     public void ingresarCarrera(Carrera miCarrera) throws SQLException{      
         try {

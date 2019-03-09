@@ -5,7 +5,9 @@
  */
 package Presentacion;
 
-import Control.ControlConsola;
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Control.ControlCarrera;
 import LogicaDeNegocio.Carrera;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class FormularioCarrera extends javax.swing.JFrame {
 
-    ControlConsola control = new ControlConsola();
+    ControlCarrera control = new ControlCarrera();
     Carrera carrera = new Carrera();
     
     public FormularioCarrera() {
@@ -164,7 +166,13 @@ public class FormularioCarrera extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_titulo_carreraActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        new MantenimientoCarrera().setVisible(true);
+        try {
+            new MantenimientoCarrera().setVisible(true);
+        } catch (GlobalException ex) {
+            Logger.getLogger(FormularioCarrera.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(FormularioCarrera.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 

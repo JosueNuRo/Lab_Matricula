@@ -5,8 +5,12 @@
  */
 package Presentacion;
 
-import Control.ControlConsola;
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Control.ControlProfesor;
 import LogicaDeNegocio.Profesor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,7 +18,7 @@ import LogicaDeNegocio.Profesor;
  */
 public class FormularioProfesor extends javax.swing.JFrame {
 
-    ControlConsola control = new ControlConsola();
+    ControlProfesor control = new ControlProfesor();
     Profesor profesor = new Profesor();
     
     public FormularioProfesor() {
@@ -174,7 +178,13 @@ public class FormularioProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_email_profesorActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        new MantenimientoProfesor().setVisible(true);
+        try {
+            new MantenimientoProfesor().setVisible(true);
+        } catch (GlobalException ex) {
+            Logger.getLogger(FormularioProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(FormularioProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 

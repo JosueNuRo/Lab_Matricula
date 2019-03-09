@@ -5,7 +5,9 @@
  */
 package Presentacion;
 
-import Control.ControlConsola;
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Control.ControlCurso;
 import LogicaDeNegocio.Curso;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,7 +17,7 @@ import java.util.logging.Logger;
 
 public class FormularioCurso extends javax.swing.JFrame {
 
-    ControlConsola control = new ControlConsola();
+    ControlCurso control = new ControlCurso();
     Curso curso = new Curso();
     
     public FormularioCurso() {
@@ -183,7 +185,13 @@ public class FormularioCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_horasSemanales_cursoActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        new MantenimientoCurso().setVisible(true);
+        try {
+            new MantenimientoCurso().setVisible(true);
+        } catch (GlobalException ex) {
+            Logger.getLogger(FormularioCurso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(FormularioCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 

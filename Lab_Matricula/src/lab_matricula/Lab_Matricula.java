@@ -16,6 +16,7 @@ import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Curso;
 import LogicaDeNegocio.Profesor;
 import Presentacion.Consola;
+import Presentacion.Login;
 import Presentacion.MantenimientoAlumno;
 import Presentacion.MantenimientoCurso;
 import Presentacion.MenuMatricula;
@@ -37,8 +38,8 @@ public class Lab_Matricula {
 //        Consola miConsola = new Consola();
 //        miConsola.menuPrincipal();
         
-        MenuMatricula miMenu = new MenuMatricula();
-        miMenu.setVisible(true);   
+        Login miLogin = new Login();
+        miLogin.setVisible(true);   
     
     }//fin main
 }//fin class

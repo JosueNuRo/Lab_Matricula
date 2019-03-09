@@ -9,11 +9,15 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlAlumno;
 import LogicaDeNegocio.Alumno;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +27,11 @@ import javax.swing.table.DefaultTableModel;
 public class MantenimientoAlumno extends javax.swing.JFrame {
     ControlAlumno control = new ControlAlumno();
     String idBuscar = "";
-    DefaultTableModel tablaAlumno = new DefaultTableModel();    
+    DefaultTableModel tablaAlumno = new DefaultTableModel();  
+    Alumno alumno = new Alumno();
+    
+    ImageIcon imagen;
+    Icon icono;
     /**
      * Creates new form MantenimientoAlumno
      */
@@ -81,10 +89,11 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         lbl_buscar = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoAlumnos = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_agregar_alumno.setText("Agregar");
+        btn_agregar_alumno.setText("AGREGAR");
         btn_agregar_alumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregar_alumnoActionPerformed(evt);
@@ -102,6 +111,11 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbl_alumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_alumnoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_alumno);
 
         txt_buscar_alumno.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +137,13 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         lbl_mantenimientoAlumnos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_mantenimientoAlumnos.setText("Mantenimiento de Alumnos");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,17 +152,19 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_buscar)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_buscar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_agregar_alumno)))
+                        .addComponent(lbl_buscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_buscar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btn_volver)
                         .addGap(96, 96, 96)
-                        .addComponent(lbl_mantenimientoAlumnos)))
+                        .addComponent(lbl_mantenimientoAlumnos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(btn_agregar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(jButton1)))
                 .addGap(0, 144, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -155,12 +178,14 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_mantenimientoAlumnos)
                     .addComponent(btn_volver))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_buscar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_buscar))
                 .addGap(29, 29, 29)
-                .addComponent(btn_agregar_alumno)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_agregar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -203,9 +228,19 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_buscar_alumnoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tbl_alumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_alumnoMouseClicked
+        int seleccion = tbl_alumno.rowAtPoint(evt.getPoint());
+        control.eliminarAlumno((String) tbl_alumno.getValueAt(seleccion,0));
+    }//GEN-LAST:event_tbl_alumnoMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar_alumno;
     private javax.swing.JButton btn_volver;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;
     private javax.swing.JLabel lbl_mantenimientoAlumnos;

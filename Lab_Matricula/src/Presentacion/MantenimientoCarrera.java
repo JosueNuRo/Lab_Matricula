@@ -5,20 +5,25 @@
  */
 package Presentacion;
 
-/**
- *
- * @author Yenny
- */
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Control.ControlCarrera;
+import LogicaDeNegocio.Carrera;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 public class MantenimientoCarrera extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MantenimientoCarrera
-     */
-    public MantenimientoCarrera() {
+    ControlCarrera control = new ControlCarrera();
+    DefaultTableModel tablaCarrera= new DefaultTableModel();  
+
+    
+    public MantenimientoCarrera() throws GlobalException, NoDataException {
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        llenarTabla();
     }
 
     /**
@@ -37,6 +42,7 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
         lbl_buscar = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoCarreras = new javax.swing.JLabel();
+        btn_borrarCarrera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +64,11 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbl_carrera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_carreraMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_carrera);
 
         lbl_buscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -73,6 +84,13 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
         lbl_mantenimientoCarreras.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_mantenimientoCarreras.setText("Mantenimiento de Carreras");
 
+        btn_borrarCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
+        btn_borrarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarCarreraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,12 +105,15 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl_buscar)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_buscar_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_agregar_carrera)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_agregar_carrera)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_borrarCarrera))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -109,10 +130,15 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_buscar_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_buscar))
-                .addGap(28, 28, 28)
-                .addComponent(btn_agregar_carrera)
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btn_agregar_carrera))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_borrarCarrera)))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
 
@@ -129,8 +155,40 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
+    private void btn_borrarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarCarreraActionPerformed
+
+    }//GEN-LAST:event_btn_borrarCarreraActionPerformed
+
+    public void llenarTabla() throws GlobalException, NoDataException{
+        tablaCarrera.addColumn("Código");
+        tablaCarrera.addColumn("Nombre");
+        tablaCarrera.addColumn("Título");
+      
+        this.tbl_carrera.setModel(tablaCarrera);
+
+
+        ArrayList<Carrera>lista = control.listarCarrera();
+        Object[] fila = new Object[tablaCarrera.getColumnCount()];
+        for (int i = 0; i < lista.size(); i++) {
+           fila[0] = lista.get(i).getCodigo_carrera();
+           fila[1] = lista.get(i).getNombre_carrera();
+           fila[2] = lista.get(i).getTitulo();
+           tablaCarrera.addRow(fila);
+        }
+    }
+    
+    public void limpiarTabla(){
+        tablaCarrera.setRowCount(0);
+    }
+    
+    private void tbl_carreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_carreraMouseClicked
+        int seleccion = tbl_carrera.rowAtPoint(evt.getPoint());
+        control.eliminarCarrera((String) tbl_carrera.getValueAt(seleccion,0));
+    }//GEN-LAST:event_tbl_carreraMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar_carrera;
+    private javax.swing.JButton btn_borrarCarrera;
     private javax.swing.JButton btn_volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;

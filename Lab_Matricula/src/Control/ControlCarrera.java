@@ -5,8 +5,14 @@
  */
 package Control;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioCarrera;
 import LogicaDeNegocio.Carrera;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ControlCarrera {
@@ -17,4 +23,38 @@ public class ControlCarrera {
         this.servicioCarrera = new ServicioCarrera();
         this.carrera = new Carrera();
     }
+    
+    public void ingresarCarrera(Carrera miCarrera) throws SQLException{      
+        try {
+            servicioCarrera.agregarCarrera(miCarrera);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void eliminarCarrera(String codigoCarrera){      
+        try {
+            servicioCarrera.eliminarCarrera(codigoCarrera);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void modificarCarrera(Carrera miCarrera) throws SQLException{      
+        try {
+            servicioCarrera.modificarCarrera(miCarrera);
+        } catch (GlobalException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList listarCarrera() throws GlobalException, NoDataException{
+        return (ArrayList) servicioCarrera.listarCarreras();
+    }  
 }
