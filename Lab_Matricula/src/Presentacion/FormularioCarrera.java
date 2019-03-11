@@ -45,7 +45,7 @@ public class FormularioCarrera extends javax.swing.JFrame {
         txt_nombre_carrera = new javax.swing.JTextField();
         txt_titulo_carrera = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        tituloVentana = new javax.swing.JLabel();
         btn_limpiar = new javax.swing.JButton();
         btn_volver = new javax.swing.JButton();
 
@@ -83,8 +83,8 @@ public class FormularioCarrera extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Agregar Carrera");
+        tituloVentana.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        tituloVentana.setText("Agregar Carrera");
 
         btn_limpiar.setText("Limpiar");
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class FormularioCarrera extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(tituloVentana)
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
@@ -135,7 +135,7 @@ public class FormularioCarrera extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(tituloVentana)
                     .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -204,10 +204,10 @@ public class FormularioCarrera extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_volver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel tituloVentana;
     private javax.swing.JTextField txt_codigo_carrera;
     private javax.swing.JTextField txt_nombre_carrera;
     private javax.swing.JTextField txt_titulo_carrera;

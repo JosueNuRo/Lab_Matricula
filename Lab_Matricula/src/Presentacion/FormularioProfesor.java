@@ -9,6 +9,7 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlProfesor;
 import LogicaDeNegocio.Profesor;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +21,7 @@ public class FormularioProfesor extends javax.swing.JFrame {
 
     ControlProfesor control = new ControlProfesor();
     Profesor profesor = new Profesor();
+    int identificador = 0;
     
     public FormularioProfesor() {
         initComponents();
@@ -28,6 +30,22 @@ public class FormularioProfesor extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    public void identificadorDeAccion(int identificador, Profesor miProfesor){
+        this.identificador = identificador;
+        if(identificador == 2){
+            tituloVentana.setText("Agregar Profesor");
+            txt_cedula_profesor.setEditable(true);        
+        }else if(identificador == 1){
+            tituloVentana.setText("Modificar Profesor");
+            txt_cedula_profesor.setEditable(false);
+            txt_cedula_profesor.setBackground(Color.WHITE);
+            txt_cedula_profesor.setText(miProfesor.getId_profesor());
+            txt_nombre_profesor.setText(miProfesor.getNombre_profesor());
+            txt_telefono_profesor.setText(miProfesor.getTelefono_profesor());
+            txt_email_profesor.setText(miProfesor.getEmail_profesor());
+        }     
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +55,7 @@ public class FormularioProfesor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        tituloVentana = new javax.swing.JLabel();
         lbl_cedula = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
         lbl_telefono = new javax.swing.JLabel();
@@ -52,8 +70,8 @@ public class FormularioProfesor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Agregar Profesor");
+        tituloVentana.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        tituloVentana.setText("Agregar Profesor");
 
         lbl_cedula.setText("Cédula:");
 
@@ -113,7 +131,7 @@ public class FormularioProfesor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(tituloVentana)
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
@@ -139,7 +157,7 @@ public class FormularioProfesor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(tituloVentana)
                     .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,13 +198,21 @@ public class FormularioProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_email_profesorActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        profesor.setId_profesor(txt_cedula_profesor.getText());
-        profesor.setNombre_profesor(txt_nombre_profesor.getText());
-        profesor.setTelefono_profesor(txt_telefono_profesor.getText());
-        profesor.setEmail_profesor(txt_email_profesor.getText());
-        profesor.setUsuario_num_ced(txt_cedula_profesor.getText());
-        
-        control.ingresarProfesor(profesor);
+        if(identificador == 2){
+            profesor.setId_profesor(txt_cedula_profesor.getText());
+            profesor.setNombre_profesor(txt_nombre_profesor.getText());
+            profesor.setTelefono_profesor(txt_telefono_profesor.getText());
+            profesor.setEmail_profesor(txt_email_profesor.getText());
+            profesor.setUsuario_num_ced(txt_cedula_profesor.getText());
+            control.ingresarProfesor(profesor);    
+        }else if(identificador == 1){
+            profesor.setId_profesor(txt_cedula_profesor.getText());
+            profesor.setNombre_profesor(txt_nombre_profesor.getText());
+            profesor.setTelefono_profesor(txt_telefono_profesor.getText());
+            profesor.setEmail_profesor(txt_email_profesor.getText());
+            profesor.setUsuario_num_ced(txt_cedula_profesor.getText());
+            control.modificarProfesor(profesor);
+        }       
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
@@ -211,11 +237,11 @@ public class FormularioProfesor extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_volver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_cedula;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_telefono;
+    private javax.swing.JLabel tituloVentana;
     private javax.swing.JTextField txt_cedula_profesor;
     private javax.swing.JTextField txt_email_profesor;
     private javax.swing.JTextField txt_nombre_profesor;

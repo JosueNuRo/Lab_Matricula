@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Yenny
  */
 public class MantenimientoCurso extends javax.swing.JFrame {
-
+    Curso curso = new Curso();
     ControlCurso control = new ControlCurso();
     DefaultTableModel tablaCurso= new DefaultTableModel(); 
     String idBuscar = "";
@@ -43,7 +43,7 @@ public class MantenimientoCurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_agregar_curso = new javax.swing.JButton();
+        btn_agregarCurso = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_curso = new javax.swing.JTable();
         txt_buscar_curso = new javax.swing.JTextField();
@@ -51,18 +51,19 @@ public class MantenimientoCurso extends javax.swing.JFrame {
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoCursos = new javax.swing.JLabel();
         btn_borrarCurso = new javax.swing.JButton();
-        btn_listar = new javax.swing.JButton();
+        btn_listarCurso = new javax.swing.JButton();
+        btn_modificarCurso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(640, 358));
 
-        btn_agregar_curso.setBackground(new java.awt.Color(204, 204, 204));
-        btn_agregar_curso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
-        btn_agregar_curso.setToolTipText("");
-        btn_agregar_curso.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
-        btn_agregar_curso.addActionListener(new java.awt.event.ActionListener() {
+        btn_agregarCurso.setBackground(new java.awt.Color(204, 204, 204));
+        btn_agregarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btn_agregarCurso.setToolTipText("");
+        btn_agregarCurso.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
+        btn_agregarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregar_cursoActionPerformed(evt);
+                btn_agregarCursoActionPerformed(evt);
             }
         });
 
@@ -116,12 +117,19 @@ public class MantenimientoCurso extends javax.swing.JFrame {
             }
         });
 
-        btn_listar.setBackground(new java.awt.Color(204, 204, 204));
-        btn_listar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
-        btn_listar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
-        btn_listar.addActionListener(new java.awt.event.ActionListener() {
+        btn_listarCurso.setBackground(new java.awt.Color(204, 204, 204));
+        btn_listarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
+        btn_listarCurso.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
+        btn_listarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_listarActionPerformed(evt);
+                btn_listarCursoActionPerformed(evt);
+            }
+        });
+
+        btn_modificarCurso.setText("jButton1");
+        btn_modificarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarCursoActionPerformed(evt);
             }
         });
 
@@ -137,16 +145,19 @@ public class MantenimientoCurso extends javax.swing.JFrame {
                         .addGap(109, 109, 109)
                         .addComponent(lbl_mantenimientoCursos))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_agregar_curso, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_agregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addComponent(lbl_buscar)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_buscar_curso, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(112, 112, 112))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(btn_modificarCurso)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_listarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)))
                         .addComponent(btn_borrarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
@@ -165,9 +176,11 @@ public class MantenimientoCurso extends javax.swing.JFrame {
                     .addComponent(lbl_buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_agregar_curso, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_borrarCurso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_listar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_modificarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_agregarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                        .addComponent(btn_borrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                        .addComponent(btn_listarCurso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -176,10 +189,10 @@ public class MantenimientoCurso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_agregar_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_cursoActionPerformed
+    private void btn_agregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCursoActionPerformed
         new FormularioCurso().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btn_agregar_cursoActionPerformed
+    }//GEN-LAST:event_btn_agregarCursoActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         new MenuMatricula().setVisible(true);
@@ -244,7 +257,7 @@ public class MantenimientoCurso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_buscar_cursoActionPerformed
 
-    private void btn_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarActionPerformed
+    private void btn_listarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarCursoActionPerformed
         try {
             limpiarTabla();
             tablaCurso.setColumnCount(0);
@@ -255,12 +268,17 @@ public class MantenimientoCurso extends javax.swing.JFrame {
             Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
         txt_buscar_curso.setText("");
-    }//GEN-LAST:event_btn_listarActionPerformed
+    }//GEN-LAST:event_btn_listarCursoActionPerformed
+
+    private void btn_modificarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarCursoActionPerformed
+
+    }//GEN-LAST:event_btn_modificarCursoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregar_curso;
+    private javax.swing.JButton btn_agregarCurso;
     private javax.swing.JButton btn_borrarCurso;
-    private javax.swing.JButton btn_listar;
+    private javax.swing.JButton btn_listarCurso;
+    private javax.swing.JButton btn_modificarCurso;
     private javax.swing.JButton btn_volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;

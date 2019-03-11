@@ -9,7 +9,6 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlProfesor;
 import LogicaDeNegocio.Profesor;
-import static java.awt.SystemColor.control;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Yenny
  */
 public class MantenimientoProfesor extends javax.swing.JFrame {
-
     String idBuscar = "";
     Profesor profesor = new Profesor();
     ControlProfesor control = new ControlProfesor();
@@ -45,7 +43,7 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_agregar_profesor = new javax.swing.JButton();
+        btn_agregarProfesor = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_profesor = new javax.swing.JTable();
         txt_buscar_profesor = new javax.swing.JTextField();
@@ -53,19 +51,20 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoProfesores = new javax.swing.JLabel();
         btn_borrarProfesor = new javax.swing.JButton();
-        btn_listar = new javax.swing.JButton();
+        btn_listarProfesor = new javax.swing.JButton();
+        btn_modificarProfesor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(600, 358));
 
-        btn_agregar_profesor.setBackground(new java.awt.Color(204, 204, 204));
-        btn_agregar_profesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
-        btn_agregar_profesor.setToolTipText("");
-        btn_agregar_profesor.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
-        btn_agregar_profesor.addActionListener(new java.awt.event.ActionListener() {
+        btn_agregarProfesor.setBackground(new java.awt.Color(204, 204, 204));
+        btn_agregarProfesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btn_agregarProfesor.setToolTipText("");
+        btn_agregarProfesor.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
+        btn_agregarProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregar_profesorActionPerformed(evt);
+                btn_agregarProfesorActionPerformed(evt);
             }
         });
 
@@ -119,12 +118,19 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
             }
         });
 
-        btn_listar.setBackground(new java.awt.Color(204, 204, 204));
-        btn_listar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
-        btn_listar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
-        btn_listar.addActionListener(new java.awt.event.ActionListener() {
+        btn_listarProfesor.setBackground(new java.awt.Color(204, 204, 204));
+        btn_listarProfesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
+        btn_listarProfesor.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
+        btn_listarProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_listarActionPerformed(evt);
+                btn_listarProfesorActionPerformed(evt);
+            }
+        });
+
+        btn_modificarProfesor.setText("jButton1");
+        btn_modificarProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarProfesorActionPerformed(evt);
             }
         });
 
@@ -149,9 +155,11 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
                                     .addComponent(txt_buscar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(btn_agregar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_agregarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btn_modificarProfesor)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_listarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(29, 29, 29)))
                             .addComponent(btn_borrarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -169,11 +177,11 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
                     .addComponent(txt_buscar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btn_borrarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_listar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btn_agregar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btn_borrarProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                    .addComponent(btn_listarProfesor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_agregarProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                    .addComponent(btn_modificarProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -182,10 +190,10 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_agregar_profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_profesorActionPerformed
+    private void btn_agregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarProfesorActionPerformed
         new FormularioProfesor().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btn_agregar_profesorActionPerformed
+    }//GEN-LAST:event_btn_agregarProfesorActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         new MenuMatricula().setVisible(true);
@@ -253,7 +261,7 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
         seleccion = tbl_profesor.rowAtPoint(evt.getPoint());
     }//GEN-LAST:event_tbl_profesorMouseClicked
 
-    private void btn_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarActionPerformed
+    private void btn_listarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarProfesorActionPerformed
         try {
             limpiarTabla();
             tablaProfesor.setColumnCount(0);
@@ -264,12 +272,31 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
             Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
         txt_buscar_profesor.setText("");
-    }//GEN-LAST:event_btn_listarActionPerformed
+    }//GEN-LAST:event_btn_listarProfesorActionPerformed
+
+    private void btn_modificarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarProfesorActionPerformed
+        int filaSelec = tbl_profesor.getSelectedRow();
+        if(filaSelec >= 0){
+            profesor.setId_profesor((String) tbl_profesor.getValueAt(seleccion, 0));
+            profesor.setNombre_profesor((String) tbl_profesor.getValueAt(seleccion, 1));
+            profesor.setTelefono_profesor((String) tbl_profesor.getValueAt(seleccion, 2));
+            profesor.setEmail_profesor((String) tbl_profesor.getValueAt(seleccion, 3));
+            profesor.setUsuario_num_ced((String) tbl_profesor.getValueAt(seleccion, 4));
+            
+            FormularioProfesor formulario = new FormularioProfesor();
+            formulario.setVisible(true);
+            this.dispose();
+            formulario.identificadorDeAccion(1,profesor);
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccione una fila a editar");
+        }
+    }//GEN-LAST:event_btn_modificarProfesorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregar_profesor;
+    private javax.swing.JButton btn_agregarProfesor;
     private javax.swing.JButton btn_borrarProfesor;
-    private javax.swing.JButton btn_listar;
+    private javax.swing.JButton btn_listarProfesor;
+    private javax.swing.JButton btn_modificarProfesor;
     private javax.swing.JButton btn_volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;

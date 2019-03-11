@@ -48,9 +48,11 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btn_agregar_profesor" min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Component id="btn_agregarProfesor" min="-2" pref="76" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btn_modificarProfesor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btn_listar" min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Component id="btn_listarProfesor" min="-2" pref="76" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -77,12 +79,11 @@
                   <Component id="lbl_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btn_borrarProfesor" min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="btn_listar" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="btn_agregar_profesor" min="-2" pref="76" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btn_borrarProfesor" alignment="1" pref="76" max="32767" attributes="0"/>
+                  <Component id="btn_listarProfesor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btn_agregarProfesor" pref="76" max="32767" attributes="0"/>
+                  <Component id="btn_modificarProfesor" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="114" max="-2" attributes="0"/>
@@ -92,7 +93,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btn_agregar_profesor">
+    <Component class="javax.swing.JButton" name="btn_agregarProfesor">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -110,7 +111,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_agregar_profesorActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_agregarProfesorActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -204,7 +205,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_borrarProfesorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_listar">
+    <Component class="javax.swing.JButton" name="btn_listarProfesor">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -221,7 +222,15 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_listarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_listarProfesorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_modificarProfesor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificarProfesorActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

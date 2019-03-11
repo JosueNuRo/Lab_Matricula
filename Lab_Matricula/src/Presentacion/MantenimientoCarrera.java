@@ -40,7 +40,7 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_agregar_carrera = new javax.swing.JButton();
+        btn_agregarCarrera = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_carrera = new javax.swing.JTable();
         txt_buscar_carrera = new javax.swing.JTextField();
@@ -48,17 +48,18 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoCarreras = new javax.swing.JLabel();
         btn_borrarCarrera = new javax.swing.JButton();
-        btn_listar = new javax.swing.JButton();
+        btn_listarCarrera = new javax.swing.JButton();
+        btn_modificarCarrera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 358));
 
-        btn_agregar_carrera.setBackground(new java.awt.Color(204, 204, 204));
-        btn_agregar_carrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
-        btn_agregar_carrera.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
-        btn_agregar_carrera.addActionListener(new java.awt.event.ActionListener() {
+        btn_agregarCarrera.setBackground(new java.awt.Color(204, 204, 204));
+        btn_agregarCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btn_agregarCarrera.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
+        btn_agregarCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregar_carreraActionPerformed(evt);
+                btn_agregarCarreraActionPerformed(evt);
             }
         });
 
@@ -112,14 +113,16 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
             }
         });
 
-        btn_listar.setBackground(new java.awt.Color(204, 204, 204));
-        btn_listar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
-        btn_listar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
-        btn_listar.addActionListener(new java.awt.event.ActionListener() {
+        btn_listarCarrera.setBackground(new java.awt.Color(204, 204, 204));
+        btn_listarCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
+        btn_listarCarrera.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
+        btn_listarCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_listarActionPerformed(evt);
+                btn_listarCarreraActionPerformed(evt);
             }
         });
+
+        btn_modificarCarrera.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,9 +148,11 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
                                         .addComponent(txt_buscar_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(95, 95, 95))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_agregar_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn_agregarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(btn_modificarCarrera)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn_listarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(26, 26, 26)))
                                 .addComponent(btn_borrarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(22, 22, 22))))
@@ -165,10 +170,11 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
                     .addComponent(lbl_buscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_borrarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_borrarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_agregar_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_listarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_agregarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_modificarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                 .addContainerGap())
@@ -177,10 +183,10 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_agregar_carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_carreraActionPerformed
+    private void btn_agregarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCarreraActionPerformed
         new FormularioCarrera().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btn_agregar_carreraActionPerformed
+    }//GEN-LAST:event_btn_agregarCarreraActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         new MenuMatricula().setVisible(true);
@@ -242,7 +248,7 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_buscar_carreraActionPerformed
 
-    private void btn_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarActionPerformed
+    private void btn_listarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarCarreraActionPerformed
         try {
             limpiarTabla();
             tablaCarrera.setColumnCount(0);
@@ -253,12 +259,13 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
             Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
         txt_buscar_carrera.setText("");
-    }//GEN-LAST:event_btn_listarActionPerformed
+    }//GEN-LAST:event_btn_listarCarreraActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregar_carrera;
+    private javax.swing.JButton btn_agregarCarrera;
     private javax.swing.JButton btn_borrarCarrera;
-    private javax.swing.JButton btn_listar;
+    private javax.swing.JButton btn_listarCarrera;
+    private javax.swing.JButton btn_modificarCarrera;
     private javax.swing.JButton btn_volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;

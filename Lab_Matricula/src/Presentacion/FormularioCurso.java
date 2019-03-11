@@ -9,6 +9,8 @@ import AccesoADatos.GlobalException;
 import AccesoADatos.NoDataException;
 import Control.ControlCurso;
 import LogicaDeNegocio.Curso;
+import LogicaDeNegocio.Profesor;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,9 +18,9 @@ import java.util.logging.Logger;
 
 
 public class FormularioCurso extends javax.swing.JFrame {
-
     ControlCurso control = new ControlCurso();
     Curso curso = new Curso();
+    int identificador = 0;
     
     public FormularioCurso() {
         initComponents();
@@ -26,7 +28,6 @@ public class FormularioCurso extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +40,7 @@ public class FormularioCurso extends javax.swing.JFrame {
         txt_nombre_curso = new javax.swing.JTextField();
         txt_creditos_curso = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        tituloVentana = new javax.swing.JLabel();
         btn_limpiar = new javax.swing.JButton();
         lbl_codigo = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
@@ -65,8 +66,8 @@ public class FormularioCurso extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Agregar Curso");
+        tituloVentana.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        tituloVentana.setText("Agregar Curso");
 
         btn_limpiar.setText("Limpiar");
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +114,7 @@ public class FormularioCurso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(tituloVentana)
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
@@ -146,7 +147,7 @@ public class FormularioCurso extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(tituloVentana)
                     .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,11 +222,11 @@ public class FormularioCurso extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_volver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_creditos;
     private javax.swing.JLabel lbl_horasSemanales;
     private javax.swing.JLabel lbl_nombre;
+    private javax.swing.JLabel tituloVentana;
     private javax.swing.JTextField txt_codigo_curso;
     private javax.swing.JTextField txt_creditos_curso;
     private javax.swing.JTextField txt_horasSemanales_curso;

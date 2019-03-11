@@ -29,7 +29,6 @@ public class FormularioAlumno extends javax.swing.JFrame {
     Alumno alumno = new Alumno();
     int identificador = 0;
     
-    
     public FormularioAlumno() {
         initComponents();
         this.setVisible(true);
@@ -269,7 +268,6 @@ public class FormularioAlumno extends javax.swing.JFrame {
             alumno.setUsuarios_num_ced(txt_cedula_alumno.getText());
             control.modificarAlumno(alumno);
         }
-        
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
