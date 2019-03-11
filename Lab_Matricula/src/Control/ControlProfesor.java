@@ -50,4 +50,8 @@ public class ControlProfesor {
     public ArrayList listarProfesores() throws GlobalException, NoDataException{
         return (ArrayList) servicioProfesor.listarProfesores();
     }
+    
+    public ArrayList buscarProfesor(String idBuscar) throws GlobalException, NoDataException{      
+        return servicioProfesor.buscarProfesor(idBuscar);
+    }
 }

@@ -11,6 +11,8 @@ import AccesoADatos.ServicioAlumno;
 import AccesoADatos.ServicioCarrera;
 import AccesoADatos.ServicioCurso;
 import AccesoADatos.ServicioProfesor;
+import Control.ControlAlumno;
+import Control.ControlConsola;
 import LogicaDeNegocio.Alumno;
 import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Curso;
@@ -40,6 +42,11 @@ public class Lab_Matricula {
         
         Login miLogin = new Login();
         miLogin.setVisible(true);   
+        
+//        Control.ControlAlumno ca = new ControlAlumno();
+//        Alumno al = new Alumno("201111111","Marta","60979646","yulissa@gmail.com","20/10/1997","EIF001","201111111");
+//        
+//        ca.modificarAlumno(al);
     
     }//fin main
 }//fin class

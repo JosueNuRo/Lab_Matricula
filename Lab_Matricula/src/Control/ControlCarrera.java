@@ -57,4 +57,8 @@ public class ControlCarrera {
     public ArrayList listarCarrera() throws GlobalException, NoDataException{
         return (ArrayList) servicioCarrera.listarCarreras();
     }  
+    
+    public ArrayList buscarCarrera(String idBuscar) throws GlobalException, NoDataException{      
+        return servicioCarrera.buscarCarrera(idBuscar);
+    }
 }

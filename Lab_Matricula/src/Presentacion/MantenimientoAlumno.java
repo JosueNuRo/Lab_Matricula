@@ -10,6 +10,7 @@ import AccesoADatos.NoDataException;
 import Control.ControlAlumno;
 import LogicaDeNegocio.Alumno;
 import java.awt.Image;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import oracle.sql.DATE;
 
 /**
  *
@@ -29,6 +31,7 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
     String idBuscar = "";
     DefaultTableModel tablaAlumno = new DefaultTableModel();  
     Alumno alumno = new Alumno();
+    int seleccion;
     
     ImageIcon imagen;
     Icon icono;
@@ -89,17 +92,22 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         lbl_buscar = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoAlumnos = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
+        btn_listar = new javax.swing.JButton();
+        btn_modificar = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_agregar_alumno.setText("AGREGAR");
+        btn_agregar_alumno.setBackground(new java.awt.Color(204, 204, 204));
+        btn_agregar_alumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btn_agregar_alumno.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
         btn_agregar_alumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregar_alumnoActionPerformed(evt);
             }
         });
 
+        tbl_alumno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tbl_alumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -127,7 +135,9 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         lbl_buscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_buscar.setText("Buscar Alumno:");
 
-        btn_volver.setText("Volver");
+        btn_volver.setBackground(new java.awt.Color(204, 204, 204));
+        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Volver.png"))); // NOI18N
+        btn_volver.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverActionPerformed(evt);
@@ -137,10 +147,28 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         lbl_mantenimientoAlumnos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_mantenimientoAlumnos.setText("Mantenimiento de Alumnos");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_eliminar.setBackground(new java.awt.Color(204, 204, 204));
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
+        btn_eliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+
+        btn_listar.setBackground(new java.awt.Color(204, 204, 204));
+        btn_listar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
+        btn_listar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
+        btn_listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_listarActionPerformed(evt);
+            }
+        });
+
+        btn_modificar.setLabel("button1");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
             }
         });
 
@@ -149,44 +177,54 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(lbl_buscar)
+                        .addComponent(btn_agregar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(btn_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txt_buscar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_volver)
-                        .addGap(96, 96, 96)
-                        .addComponent(lbl_mantenimientoAlumnos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(btn_agregar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton1)))
-                .addGap(0, 144, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                        .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_mantenimientoAlumnos)
+                        .addGap(121, 121, 121))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(lbl_buscar)
+                .addGap(18, 18, 18)
+                .addComponent(txt_buscar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_mantenimientoAlumnos)
-                    .addComponent(btn_volver))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_volver, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(lbl_mantenimientoAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_buscar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_buscar))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_agregar_alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btn_agregar_alumno, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                .addComponent(btn_listar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                        .addGap(26, 26, 26))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -195,8 +233,10 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregar_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_alumnoActionPerformed
-        new FormularioAlumno().setVisible(true);
+        FormularioAlumno formulario = new FormularioAlumno();
+        formulario.setVisible(true);
         this.dispose();
+        formulario.identificadorDeAccion(2,alumno);
     }//GEN-LAST:event_btn_agregar_alumnoActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
@@ -228,19 +268,67 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_buscar_alumnoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        int filaSelec = tbl_alumno.getSelectedRow();
+        if(filaSelec >= 0){
+            control.eliminarAlumno((String) tbl_alumno.getValueAt(seleccion,0));
+            try {
+                limpiarTabla();
+                tablaAlumno.setColumnCount(0);
+                llenarTabla();
+            } catch (GlobalException ex) {
+                Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoDataException ex) {
+                Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccione una fila a eliminar");
+        }
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void tbl_alumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_alumnoMouseClicked
-        int seleccion = tbl_alumno.rowAtPoint(evt.getPoint());
-        control.eliminarAlumno((String) tbl_alumno.getValueAt(seleccion,0));
+        seleccion = tbl_alumno.rowAtPoint(evt.getPoint());
     }//GEN-LAST:event_tbl_alumnoMouseClicked
+
+    private void btn_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarActionPerformed
+        try {
+            limpiarTabla();
+            tablaAlumno.setColumnCount(0);
+            llenarTabla();
+        } catch (GlobalException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txt_buscar_alumno.setText("");
+    }//GEN-LAST:event_btn_listarActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        int filaSelec = tbl_alumno.getSelectedRow();
+        if(filaSelec >= 0){
+            alumno.setId_alumno((String) tbl_alumno.getValueAt(seleccion, 0));
+            alumno.setNombre_alumno((String) tbl_alumno.getValueAt(seleccion, 1));
+            alumno.setTelefono_alumno((String) tbl_alumno.getValueAt(seleccion, 2));
+            alumno.setEmail_alumno((String) tbl_alumno.getValueAt(seleccion, 3));
+            alumno.setFechaNacimiento((Date) tbl_alumno.getValueAt(seleccion, 4));
+            alumno.setCarreras_cod_carr((String) tbl_alumno.getValueAt(seleccion, 5));
+            alumno.setUsuarios_num_ced((String) tbl_alumno.getValueAt(seleccion, 6));
+            
+            FormularioAlumno formulario = new FormularioAlumno();
+            formulario.setVisible(true);
+            this.dispose();
+            formulario.identificadorDeAccion(1,alumno);
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccione una fila a editar");
+        }
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar_alumno;
+    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_listar;
+    private java.awt.Button btn_modificar;
     private javax.swing.JButton btn_volver;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;
     private javax.swing.JLabel lbl_mantenimientoAlumnos;

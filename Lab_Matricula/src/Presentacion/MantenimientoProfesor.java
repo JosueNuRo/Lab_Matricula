@@ -13,6 +13,7 @@ import static java.awt.SystemColor.control;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +25,8 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
     String idBuscar = "";
     Profesor profesor = new Profesor();
     ControlProfesor control = new ControlProfesor();
-    DefaultTableModel tablaProfesor= new DefaultTableModel();  
+    DefaultTableModel tablaProfesor= new DefaultTableModel(); 
+    int seleccion;
     
     public MantenimientoProfesor() throws GlobalException, NoDataException {
         initComponents();
@@ -51,16 +53,23 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
         btn_volver = new javax.swing.JButton();
         lbl_mantenimientoProfesores = new javax.swing.JLabel();
         btn_borrarProfesor = new javax.swing.JButton();
+        btn_listar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(600, 358));
 
-        btn_agregar_profesor.setText("Agregar");
+        btn_agregar_profesor.setBackground(new java.awt.Color(204, 204, 204));
+        btn_agregar_profesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btn_agregar_profesor.setToolTipText("");
+        btn_agregar_profesor.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 204, 0)));
         btn_agregar_profesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregar_profesorActionPerformed(evt);
             }
         });
 
+        tbl_profesor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tbl_profesor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -88,7 +97,9 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
         lbl_buscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_buscar.setText("Buscar Profesor:");
 
-        btn_volver.setText("Volver");
+        btn_volver.setBackground(new java.awt.Color(204, 204, 204));
+        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Volver.png"))); // NOI18N
+        btn_volver.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverActionPerformed(evt);
@@ -98,10 +109,22 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
         lbl_mantenimientoProfesores.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_mantenimientoProfesores.setText("Mantenimiento de Profesores");
 
-        btn_borrarProfesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
+        btn_borrarProfesor.setBackground(new java.awt.Color(204, 204, 204));
+        btn_borrarProfesor.setForeground(new java.awt.Color(255, 0, 0));
+        btn_borrarProfesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
+        btn_borrarProfesor.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
         btn_borrarProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_borrarProfesorActionPerformed(evt);
+            }
+        });
+
+        btn_listar.setBackground(new java.awt.Color(204, 204, 204));
+        btn_listar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar.png"))); // NOI18N
+        btn_listar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
+        btn_listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_listarActionPerformed(evt);
             }
         });
 
@@ -110,51 +133,50 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_volver)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_buscar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txt_buscar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_agregar_profesor)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_borrarProfesor))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(lbl_mantenimientoProfesores))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(lbl_mantenimientoProfesores))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(63, 63, 63)
+                                    .addComponent(lbl_buscar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txt_buscar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(btn_agregar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(29, 29, 29)))
+                            .addComponent(btn_borrarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_volver)
-                    .addComponent(lbl_mantenimientoProfesores))
-                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_mantenimientoProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_buscar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_buscar))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btn_agregar_profesor))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_borrarProfesor)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_borrarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_listar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_agregar_profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -197,21 +219,57 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
     }
     
     private void txt_buscar_profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscar_profesorActionPerformed
-       
+        try {
+            // TODO add your handling code here:
+            limpiarTabla();
+            idBuscar = txt_buscar_profesor.getText();
+            ArrayList<Profesor>lista = control.buscarProfesor(idBuscar);
+            Object[] fila = new Object[tablaProfesor.getColumnCount()];
+            for (int i = 0; i < lista.size(); i++) {
+                fila[0] = lista.get(i).getId_profesor();
+                fila[1] = lista.get(i).getNombre_profesor();
+                fila[2] = lista.get(i).getTelefono_profesor();
+                fila[3] = lista.get(i).getEmail_profesor();
+                fila[4] = lista.get(i).getUsuario_num_ced();
+                tablaProfesor.addRow(fila);
+            }
+        } catch (GlobalException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_txt_buscar_profesorActionPerformed
 
     private void btn_borrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarProfesorActionPerformed
-        
+        int filaSelec = tbl_profesor.getSelectedRow();
+        if(filaSelec >= 0){
+            control.eliminarProfesor((String) tbl_profesor.getValueAt(seleccion,0));
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccione una fila a eliminar");
+        }
     }//GEN-LAST:event_btn_borrarProfesorActionPerformed
 
     private void tbl_profesorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_profesorMouseClicked
-        int seleccion = tbl_profesor.rowAtPoint(evt.getPoint());
-        control.eliminarProfesor((String) tbl_profesor.getValueAt(seleccion,0));
+        seleccion = tbl_profesor.rowAtPoint(evt.getPoint());
     }//GEN-LAST:event_tbl_profesorMouseClicked
+
+    private void btn_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarActionPerformed
+        try {
+            limpiarTabla();
+            tablaProfesor.setColumnCount(0);
+            llenarTabla();
+        } catch (GlobalException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(MantenimientoAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txt_buscar_profesor.setText("");
+    }//GEN-LAST:event_btn_listarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar_profesor;
     private javax.swing.JButton btn_borrarProfesor;
+    private javax.swing.JButton btn_listar;
     private javax.swing.JButton btn_volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_buscar;

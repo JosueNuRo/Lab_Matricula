@@ -77,15 +77,21 @@ public class ServicioCarrera extends Servicio{
             pstmt.setString(1,miCarrera.getCodigo_carrera());
             pstmt.setString(2,miCarrera.getNombre_carrera());
             pstmt.setString(3,miCarrera.getTitulo());
-            boolean resultado = pstmt.execute();
-            if (resultado == true) {
-                throw new NoDataException("No se realizo la insercion");
+            int resultado = pstmt.executeUpdate();
+            if (resultado != 0)
+            {
+                throw new NoDataException("No se realizo la actualización");
             }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new GlobalException("Llave duplicada");
-        } finally {
+            else
+            {
+                System.out.println("\nModificación Satisfactoria!");
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new GlobalException("Sentencia no valida");
+        }  
+        finally {
             try {
                 if (pstmt != null) {
                     pstmt.close();
@@ -153,7 +159,7 @@ public class ServicioCarrera extends Servicio{
                     rs.getString("nombre_carrera"),
                     rs.getString("titulo"));
                     coleccion.add(miCarrera);
-                    System.out.println(miCarrera.toString() + "\n--------------------------------------");
+                    //System.out.println(miCarrera.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){
@@ -180,7 +186,7 @@ public class ServicioCarrera extends Servicio{
         return coleccion;
     }
      
-    public Carrera buscarCarrera(String idBusqueda) throws GlobalException, NoDataException{
+    public ArrayList buscarCarrera(String idBusqueda) throws GlobalException, NoDataException{
         try{
             conectar();
         }catch (ClassNotFoundException e){
@@ -203,7 +209,7 @@ public class ServicioCarrera extends Servicio{
                 rs.getString("nombre_carrera"),
                 rs.getString("titulo"));
                 coleccion.add(miCarrera);
-            System.out.println(miCarrera.toString() + "\n--------------------------------------");
+                //System.out.println(miCarrera.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -225,6 +231,6 @@ public class ServicioCarrera extends Servicio{
         if (coleccion == null || coleccion.size() == 0){
             throw new NoDataException("No hay datos");
         }
-        return miCarrera;
+        return coleccion;
     }
 }//fin class

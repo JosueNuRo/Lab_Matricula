@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 
@@ -43,7 +44,7 @@ public class ServicioAlumno extends Servicio{
             pstmt.setString(2,miAlumno.getNombre_alumno());
             pstmt.setString(3,miAlumno.getTelefono_alumno());
             pstmt.setString(4,miAlumno.getEmail_alumno());
-            pstmt.setString(5,miAlumno.getFechaNacimiento());
+            pstmt.setString(5,miAlumno.getNuevaFecha());
             pstmt.setString(6,miAlumno.getCarreras_cod_carr());
             pstmt.setString(7,miAlumno.getUsuarios_num_ced());
             boolean resultado = pstmt.execute();
@@ -67,6 +68,8 @@ public class ServicioAlumno extends Servicio{
     }
     
     public void modificarAlumno(Alumno miAlumno) throws GlobalException, NoDataException{
+        JOptionPane.showMessageDialog(null, "servicio 1");
+
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -75,25 +78,34 @@ public class ServicioAlumno extends Servicio{
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
         CallableStatement pstmt=null;
-        
+
+        JOptionPane.showMessageDialog(null, miAlumno.getFechaNacimiento());
+
+       
         try {
             pstmt = conexion.prepareCall(MODIFICAR_ALUMNO);
             pstmt.setString(1,miAlumno.getId_alumno());
             pstmt.setString(2,miAlumno.getNombre_alumno());
             pstmt.setString(3,miAlumno.getTelefono_alumno());
             pstmt.setString(4,miAlumno.getEmail_alumno());
-            pstmt.setString(5,miAlumno.getFechaNacimiento());
+            pstmt.setString(5,miAlumno.getNuevaFecha());
             pstmt.setString(6,miAlumno.getCarreras_cod_carr());
             pstmt.setString(7,miAlumno.getUsuarios_num_ced());
-            boolean resultado = pstmt.execute();
-            if (resultado == true) {
-                throw new NoDataException("No se realizo la actualizacion");
+            int resultado = pstmt.executeUpdate();
+            if (resultado != 0)
+            {
+                throw new NoDataException("No se realizo la actualización");
             }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new GlobalException("Llave duplicada");
-        } finally {
+            else
+            {
+                System.out.println("\nModificación Satisfactoria!");
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new GlobalException("Sentencia no valida");
+        }  
+        finally {
             try {
                 if (pstmt != null) {
                     pstmt.close();
@@ -128,7 +140,7 @@ public class ServicioAlumno extends Servicio{
                     rs.getString("nombre_alumno"),
                     rs.getString("telefono_alumno"),
                     rs.getString("email_alumno"),
-                    rs.getString("fecha_nacimiento"),
+                    rs.getDate("fecha_nacimiento"),
                     rs.getString("carreras_codigo_carrera"),
                     rs.getString("usuarios_num_cedula"));
                     coleccion.add(miAlumno);
@@ -182,11 +194,11 @@ public class ServicioAlumno extends Servicio{
                 rs.getString("nombre_alumno"),
                 rs.getString("telefono_alumno"),
                 rs.getString("email_alumno"),
-                rs.getString("fecha_nacimiento"),
+                rs.getDate("fecha_nacimiento"),
                 rs.getString("carreras_codigo_carrera"),
                 rs.getString("usuarios_num_cedula"));
                 coleccion.add(miAlumno);
-            //System.out.println(miAlumno.toString() + "\n--------------------------------------");
+                System.out.println(miAlumno.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();

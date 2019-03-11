@@ -38,30 +38,32 @@ public class MenuMatricula extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         boton_menu = new javax.swing.JButton();
-        ScrollPane = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        btn_mantenimientoAlumno = new javax.swing.JButton();
-        btn_mantenimientoCursos = new javax.swing.JButton();
-        btn_mantenimientoCarrera = new javax.swing.JButton();
-        btn_mantenimientoProfesores = new javax.swing.JButton();
+        panel_izquierdo = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btn_mantenimientoCarrera = new javax.swing.JButton();
+        btn_mantenimientoAlumno = new javax.swing.JButton();
+        btn_mantenimientoCursos = new javax.swing.JButton();
+        btn_mantenimientoProfesores = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBackground(new java.awt.Color(51, 0, 153));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         lbl_titulo.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         lbl_titulo.setText("Bienvenido");
 
-        boton_menu.setBackground(new java.awt.Color(102, 0, 204));
-        boton_menu.setForeground(new java.awt.Color(102, 0, 204));
+        boton_menu.setBackground(new java.awt.Color(153, 153, 153));
+        boton_menu.setForeground(new java.awt.Color(153, 153, 153));
         boton_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu.png"))); // NOI18N
-        boton_menu.setBorderPainted(false);
+        boton_menu.setBorder(null);
         boton_menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_menuActionPerformed(evt);
@@ -83,47 +85,19 @@ public class MenuMatricula extends JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boton_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(379, 303));
-        jPanel1.setPreferredSize(new java.awt.Dimension(379, 303));
+        panel_izquierdo.setBackground(new java.awt.Color(255, 255, 255));
+        panel_izquierdo.setForeground(new java.awt.Color(0, 255, 255));
+        panel_izquierdo.setPreferredSize(new java.awt.Dimension(240, 389));
 
-        btn_mantenimientoAlumno.setText("Mantenimiento de Alumnos");
-        btn_mantenimientoAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mantenimientoAlumnoActionPerformed(evt);
-            }
-        });
+        jPanel2.setBackground(new java.awt.Color(17, 184, 172));
 
-        btn_mantenimientoCursos.setText("Mantenimiento de Cursos");
-        btn_mantenimientoCursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mantenimientoCursosActionPerformed(evt);
-            }
-        });
-
-        btn_mantenimientoCarrera.setText("Mantenimiento de Carreras");
-        btn_mantenimientoCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mantenimientoCarreraActionPerformed(evt);
-            }
-        });
-
-        btn_mantenimientoProfesores.setText("Mantenimiento de Profesores");
-        btn_mantenimientoProfesores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mantenimientoProfesoresActionPerformed(evt);
-            }
-        });
-
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Gestion Academica");
+        jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
+        jLabel1.setText("Gestión Academica");
 
         jLabel2.setText("2019");
 
@@ -132,87 +106,152 @@ public class MenuMatricula extends JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(12, 12, 12))
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        btn_mantenimientoCarrera.setBackground(new java.awt.Color(255, 255, 255));
+        btn_mantenimientoCarrera.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_mantenimientoCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Mantenimiento.png"))); // NOI18N
+        btn_mantenimientoCarrera.setText("Carreras");
+        btn_mantenimientoCarrera.setBorder(null);
+        btn_mantenimientoCarrera.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_mantenimientoCarrera.setIconTextGap(20);
+        btn_mantenimientoCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoCarreraActionPerformed(evt);
+            }
+        });
+
+        btn_mantenimientoAlumno.setBackground(new java.awt.Color(255, 255, 255));
+        btn_mantenimientoAlumno.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_mantenimientoAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Mantenimiento.png"))); // NOI18N
+        btn_mantenimientoAlumno.setText("Alumnos");
+        btn_mantenimientoAlumno.setBorder(null);
+        btn_mantenimientoAlumno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_mantenimientoAlumno.setIconTextGap(20);
+        btn_mantenimientoAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoAlumnoActionPerformed(evt);
+            }
+        });
+
+        btn_mantenimientoCursos.setBackground(new java.awt.Color(255, 255, 255));
+        btn_mantenimientoCursos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_mantenimientoCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Mantenimiento.png"))); // NOI18N
+        btn_mantenimientoCursos.setText("Cursos");
+        btn_mantenimientoCursos.setToolTipText("");
+        btn_mantenimientoCursos.setBorder(null);
+        btn_mantenimientoCursos.setDisabledIcon(null);
+        btn_mantenimientoCursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_mantenimientoCursos.setIconTextGap(20);
+        btn_mantenimientoCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoCursosActionPerformed(evt);
+            }
+        });
+
+        btn_mantenimientoProfesores.setBackground(new java.awt.Color(255, 255, 255));
+        btn_mantenimientoProfesores.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_mantenimientoProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Mantenimiento.png"))); // NOI18N
+        btn_mantenimientoProfesores.setText("Profesores");
+        btn_mantenimientoProfesores.setBorder(null);
+        btn_mantenimientoProfesores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_mantenimientoProfesores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_mantenimientoProfesores.setIconTextGap(20);
+        btn_mantenimientoProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mantenimientoProfesoresActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Mantenimientos");
+
+        jSeparator1.setBackground(new java.awt.Color(0, 204, 204));
+
+        javax.swing.GroupLayout panel_izquierdoLayout = new javax.swing.GroupLayout(panel_izquierdo);
+        panel_izquierdo.setLayout(panel_izquierdoLayout);
+        panel_izquierdoLayout.setHorizontalGroup(
+            panel_izquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_izquierdoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panel_izquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(btn_mantenimientoCursos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_mantenimientoAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(panel_izquierdoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btn_mantenimientoAlumno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_mantenimientoCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 165, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panel_izquierdoLayout.setVerticalGroup(
+            panel_izquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_izquierdoLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(btn_mantenimientoProfesores)
-                .addGap(18, 18, 18)
-                .addComponent(btn_mantenimientoCarrera)
-                .addGap(18, 18, 18)
-                .addComponent(btn_mantenimientoAlumno)
-                .addGap(15, 15, 15)
-                .addComponent(btn_mantenimientoCursos)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_mantenimientoCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(btn_mantenimientoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        ScrollPane.setViewportView(jPanel1);
-        jPanel1.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 355, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(panel_izquierdo, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(panel_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_mantenimientoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoAlumnoActionPerformed
-        try {
-            new MantenimientoAlumno().setVisible(true);
-        } catch (GlobalException ex) {
-            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoDataException ex) {
-            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
+    private void boton_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_menuActionPerformed
+        if(banderaPanel == true){
+            panel_izquierdo.setSize(0, 0);
+            banderaPanel = false;
+        }else{
+            panel_izquierdo.setSize(240, 387);
+            banderaPanel = true;
         }
-        this.dispose();
-    }//GEN-LAST:event_btn_mantenimientoAlumnoActionPerformed
+        
+    }//GEN-LAST:event_boton_menuActionPerformed
 
     private void btn_mantenimientoProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoProfesoresActionPerformed
         try {
@@ -225,17 +264,6 @@ public class MenuMatricula extends JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_mantenimientoProfesoresActionPerformed
 
-    private void btn_mantenimientoCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoCursosActionPerformed
-        try {
-            new MantenimientoCurso().setVisible(true);
-        } catch (GlobalException ex) {
-            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoDataException ex) {
-            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.dispose();
-    }//GEN-LAST:event_btn_mantenimientoCursosActionPerformed
-
     private void btn_mantenimientoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoCarreraActionPerformed
         try {
             new MantenimientoCarrera().setVisible(true);
@@ -247,16 +275,27 @@ public class MenuMatricula extends JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_mantenimientoCarreraActionPerformed
 
-    private void boton_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_menuActionPerformed
-        if(banderaPanel == true){
-            ScrollPane.setSize(0, 0);
-            banderaPanel = false;
-        }else{
-            ScrollPane.setSize(211, 337);
-            banderaPanel = true;
+    private void btn_mantenimientoCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoCursosActionPerformed
+        try {
+            new MantenimientoCurso().setVisible(true);
+        } catch (GlobalException ex) {
+            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_boton_menuActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_mantenimientoCursosActionPerformed
+
+    private void btn_mantenimientoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoAlumnoActionPerformed
+        try {
+            new MantenimientoAlumno().setVisible(true);
+        } catch (GlobalException ex) {
+            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDataException ex) {
+            Logger.getLogger(MenuMatricula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_btn_mantenimientoAlumnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,17 +336,19 @@ public class MenuMatricula extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JButton boton_menu;
     private javax.swing.JButton btn_mantenimientoAlumno;
     private javax.swing.JButton btn_mantenimientoCarrera;
     private javax.swing.JButton btn_mantenimientoCursos;
     private javax.swing.JButton btn_mantenimientoProfesores;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JPanel panel_izquierdo;
     // End of variables declaration//GEN-END:variables
 }

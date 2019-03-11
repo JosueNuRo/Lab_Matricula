@@ -173,7 +173,7 @@ public class Consola {
         alumno.setNombre_alumno(nombreAlumno);
         alumno.setTelefono_alumno(telefonoAlumno);
         alumno.setEmail_alumno(emailAlumno);
-        alumno.setFechaNacimiento(fechaNacimiento);
+        //alumno.setFechaNacimiento(fechaNacimiento);
         alumno.setCarreras_cod_carr(carreraAlumno);
         alumno.setUsuarios_num_ced(usuarioAlumno);
         
@@ -233,7 +233,7 @@ public class Consola {
         alumno.setNombre_alumno(nombreAlumno);
         alumno.setTelefono_alumno(telefonoAlumno);
         alumno.setEmail_alumno(emailAlumno);
-        alumno.setFechaNacimiento(fechaNacimiento);
+        //alumno.setFechaNacimiento(fechaNacimiento);
         alumno.setCarreras_cod_carr(carreraAlumno);
         alumno.setUsuarios_num_ced(usuarioAlumno);
         

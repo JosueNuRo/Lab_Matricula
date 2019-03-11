@@ -51,4 +51,8 @@ public class ControlCurso {
     public ArrayList listarCurso() throws GlobalException, NoDataException{
         return (ArrayList) servicioCurso.listarCursos();
     }  
+    
+    public ArrayList buscarCurso(String idBuscar) throws GlobalException, NoDataException{      
+        return servicioCurso.buscarCurso(idBuscar);
+    }
 }

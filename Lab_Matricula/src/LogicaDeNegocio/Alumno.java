@@ -5,24 +5,25 @@
  */
 package LogicaDeNegocio;
 
+import java.sql.Date;
 import oracle.sql.DATE;
 
 
 public class Alumno {
-    public String id_alumno, nombre_alumno, telefono_alumno, email_alumno, carreras_cod_carr, usuarios_num_ced;
-    public String fechaNacimiento;
+    public String id_alumno, nombre_alumno, telefono_alumno, email_alumno, carreras_cod_carr, usuarios_num_ced, nuevaFecha;
+    public Date fechaNacimiento;
 
     public Alumno(){
         id_alumno = new String();
         nombre_alumno = new String();
         telefono_alumno = new String();
         email_alumno = new String();
-        fechaNacimiento = new String();
+        fechaNacimiento = new Date(0);
         carreras_cod_carr = new String();
         usuarios_num_ced = new String();
     }
 
-    public Alumno(String id_alumno, String nombre_alumno, String telefono_alumno, String email_alumno, String fechaNacimiento, String carreras_cod_carr, String usuarios_num_ced) {
+    public Alumno(String id_alumno, String nombre_alumno, String telefono_alumno, String email_alumno, Date fechaNacimiento, String carreras_cod_carr, String usuarios_num_ced) {
         this.id_alumno = id_alumno;
         this.nombre_alumno = nombre_alumno;
         this.telefono_alumno = telefono_alumno;
@@ -80,11 +81,11 @@ public class Alumno {
         this.usuarios_num_ced = usuarios_num_ced;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -92,5 +93,12 @@ public class Alumno {
     public String toString() {
         return "Alumno{" + "id_alumno=" + id_alumno + ", nombre_alumno=" + nombre_alumno + ", telefono_alumno=" + telefono_alumno + ", email_alumno=" + email_alumno + ", carreras_cod_carr=" + carreras_cod_carr + ", usuarios_num_ced=" + usuarios_num_ced + ", fechaNacimiento=" + fechaNacimiento + '}';
     }
+
+    public void setNuevaFecha(String fnacim) {
+        this.nuevaFecha = fnacim; 
+    }
     
+    public String getNuevaFecha() {
+        return nuevaFecha; 
+    }
 }

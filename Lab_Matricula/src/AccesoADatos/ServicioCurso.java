@@ -77,15 +77,21 @@ public class ServicioCurso extends Servicio{
             pstmt.setString(2,miCurso.getNombre_curso());
             pstmt.setInt(3,miCurso.getCreditos());
             pstmt.setInt(4,miCurso.getHoras_semanales());
-            boolean resultado = pstmt.execute();
-            if (resultado == true) {
-                throw new NoDataException("No se realizo la insercion");
+            int resultado = pstmt.executeUpdate();
+            if (resultado != 0)
+            {
+                throw new NoDataException("No se realizo la actualización");
             }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new GlobalException("Llave duplicada");
-        } finally {
+            else
+            {
+                System.out.println("\nModificación Satisfactoria!");
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new GlobalException("Sentencia no valida");
+        }  
+        finally {
             try {
                 if (pstmt != null) {
                     pstmt.close();
@@ -121,7 +127,7 @@ public class ServicioCurso extends Servicio{
                     rs.getInt("creditos"),
                     rs.getInt("horas_semanales"));
                     coleccion.add(miCurso);
-                    System.out.println(miCurso.toString() + "\n--------------------------------------");
+                    //System.out.println(miCurso.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){
@@ -182,7 +188,7 @@ public class ServicioCurso extends Servicio{
             }
 	}
     
-    public Curso buscarCurso(String idBusqueda) throws GlobalException, NoDataException{
+    public ArrayList buscarCurso(String idBusqueda) throws GlobalException, NoDataException{
         try{
             conectar();
         }catch (ClassNotFoundException e){
@@ -206,7 +212,7 @@ public class ServicioCurso extends Servicio{
                 rs.getInt("creditos"),
                 rs.getInt("horas_semanales"));
                 coleccion.add(miCurso);
-                System.out.println(miCurso.toString() + "\n--------------------------------------");
+                //System.out.println(miCurso.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -228,6 +234,6 @@ public class ServicioCurso extends Servicio{
         if (coleccion == null || coleccion.size() == 0){
             throw new NoDataException("No hay datos");
         }
-        return miCurso;
+        return coleccion;
     }
 }

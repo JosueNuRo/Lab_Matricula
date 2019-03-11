@@ -47,15 +47,21 @@ public class ServicioProfesor extends Servicio{
             pstmt.setString(3,miProfesor.getTelefono_profesor());
             pstmt.setString(4,miProfesor.getEmail_profesor());
             pstmt.setString(5,miProfesor.getUsuario_num_ced());
-            boolean resultado = pstmt.execute();
-            if (resultado == true) {
-                throw new NoDataException("No se realizo la insercion");
+            int resultado = pstmt.executeUpdate();
+            if (resultado != 0)
+            {
+                throw new NoDataException("No se realizo la actualización");
             }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new GlobalException("Llave duplicada");
-        } finally {
+            else
+            {
+                System.out.println("\nModificación Satisfactoria!");
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new GlobalException("Sentencia no valida");
+        }  
+        finally {
             try {
                 if (pstmt != null) {
                     pstmt.close();
@@ -129,7 +135,7 @@ public class ServicioProfesor extends Servicio{
                     rs.getString("email_profesor"),
                     rs.getString("usuarios_num_cedula"));
                     coleccion.add(miProfesor);
-                    System.out.println(miProfesor.toString() + "\n--------------------------------------");
+                    //System.out.println(miProfesor.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){
@@ -190,7 +196,7 @@ public class ServicioProfesor extends Servicio{
             }
 	}
    
-   public Profesor buscarProfesor(String idBusqueda) throws GlobalException, NoDataException{
+   public ArrayList buscarProfesor(String idBusqueda) throws GlobalException, NoDataException{
         try{
             conectar();
         }catch (ClassNotFoundException e){
@@ -215,7 +221,7 @@ public class ServicioProfesor extends Servicio{
                 rs.getString("email_profesor"),
                 rs.getString("usuarios_num_cedula"));
                 coleccion.add(miProfesor);
-                System.out.println(miProfesor.toString() + "\n--------------------------------------");
+                //System.out.println(miProfesor.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -237,7 +243,7 @@ public class ServicioProfesor extends Servicio{
         if (coleccion == null || coleccion.size() == 0){
             throw new NoDataException("No hay datos");
         }
-        return miProfesor;
+        return coleccion;
     }
 
     public void modificarProfesor(Carrera miCarrera) {
