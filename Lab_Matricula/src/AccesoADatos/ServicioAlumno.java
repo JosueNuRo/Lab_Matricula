@@ -6,15 +6,11 @@
 package AccesoADatos;
 
 import LogicaDeNegocio.Alumno;
-import java.awt.List;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collection;
-import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 
@@ -68,8 +64,6 @@ public class ServicioAlumno extends Servicio{
     }
     
     public void modificarAlumno(Alumno miAlumno) throws GlobalException, NoDataException{
-        JOptionPane.showMessageDialog(null, "servicio 1");
-
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -78,10 +72,6 @@ public class ServicioAlumno extends Servicio{
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
         CallableStatement pstmt=null;
-
-        JOptionPane.showMessageDialog(null, miAlumno.getFechaNacimiento());
-
-       
         try {
             pstmt = conexion.prepareCall(MODIFICAR_ALUMNO);
             pstmt.setString(1,miAlumno.getId_alumno());
@@ -92,17 +82,13 @@ public class ServicioAlumno extends Servicio{
             pstmt.setString(6,miAlumno.getCarreras_cod_carr());
             pstmt.setString(7,miAlumno.getUsuarios_num_ced());
             int resultado = pstmt.executeUpdate();
-            if (resultado != 0)
-            {
+            if (resultado != 0){
                 throw new NoDataException("No se realizo la actualización");
-            }
-            else
-            {
+            }else{
                 System.out.println("\nModificación Satisfactoria!");
             }
         }
-        catch (SQLException e)
-        {
+        catch (SQLException e){
             throw new GlobalException("Sentencia no valida");
         }  
         finally {
@@ -144,7 +130,6 @@ public class ServicioAlumno extends Servicio{
                     rs.getString("carreras_codigo_carrera"),
                     rs.getString("usuarios_num_cedula"));
                     coleccion.add(miAlumno);
-                    //System.out.println(miAlumno.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){
@@ -198,7 +183,6 @@ public class ServicioAlumno extends Servicio{
                 rs.getString("carreras_codigo_carrera"),
                 rs.getString("usuarios_num_cedula"));
                 coleccion.add(miAlumno);
-                System.out.println(miAlumno.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();

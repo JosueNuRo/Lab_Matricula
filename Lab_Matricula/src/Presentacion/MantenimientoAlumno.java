@@ -32,7 +32,6 @@ public class MantenimientoAlumno extends javax.swing.JFrame {
     DefaultTableModel tablaAlumno = new DefaultTableModel();  
     Alumno alumno = new Alumno();
     int seleccion;
-    
     ImageIcon imagen;
     Icon icono;
     /**

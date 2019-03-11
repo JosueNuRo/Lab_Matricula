@@ -10,10 +10,8 @@ import AccesoADatos.NoDataException;
 import AccesoADatos.ServicioAlumno;
 import LogicaDeNegocio.Alumno;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 
 public class ControlAlumno {
