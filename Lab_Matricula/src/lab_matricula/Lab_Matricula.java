@@ -5,14 +5,19 @@
  */
 package lab_matricula;
 
+import AccesoADatos.GlobalException;
+import AccesoADatos.NoDataException;
+import Presentacion.Consola;
 import Presentacion.Login;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class Lab_Matricula {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, IOException, NoDataException, GlobalException {
 //        Consola miConsola = new Consola();
 //        miConsola.menuPrincipal();
         

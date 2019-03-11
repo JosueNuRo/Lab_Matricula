@@ -5,22 +5,14 @@
  */
 package AccesoADatos;
 
-import LogicaDeNegocio.Alumno;
 import LogicaDeNegocio.Carrera;
 import LogicaDeNegocio.Profesor;
-import java.sql.CallableStatement;
-import java.sql.SQLException;
-import java.sql.CallableStatement;
-import java.sql.SQLException;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import oracle.jdbc.internal.OracleTypes;
-
-
 
 public class ServicioProfesor extends Servicio{
     private static final String AGREGAR_PROFESOR = "call add_PROFESORES(?,?,?,?,?)";
