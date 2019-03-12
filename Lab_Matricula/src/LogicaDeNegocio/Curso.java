@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 
 public class Curso {
-    private String codigo_curso, nombre_curso;
+    private String codigo_curso, nombre_curso, nuevosCreditos;
     private int creditos, horas_semanales;
 
     public Curso() {
@@ -49,6 +49,14 @@ public class Curso {
     public void setCreditos(int creditos) {
         this.creditos = creditos;
     }
+    
+    public String getNuevosCreditos() {
+        return nuevosCreditos;
+    }
+    
+    public void setNuevosCreditos(String nuevosCreditos) {
+        this.nuevosCreditos = nuevosCreditos;
+    }
 
     public int getHoras_semanales() {
         return horas_semanales;
@@ -57,7 +65,7 @@ public class Curso {
     public void setHoras_semanales(int horas_semanales) {
         this.horas_semanales = horas_semanales;
     }
-
+    
     @Override
     public String toString() {
         return "Curso{" + "codigo_curso=" + codigo_curso + ", nombre_curso=" + nombre_curso + ", creditos=" + creditos + ", horas_semanales=" + horas_semanales + '}';

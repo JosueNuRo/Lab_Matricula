@@ -27,45 +27,42 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btn_volver" min="-2" pref="46" max="-2" attributes="0"/>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
-              <Component id="tituloVentana" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="lbl_telefono" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_email" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_cedula" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lbl_nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btn_limpiar" min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_guardar" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_codigoCarrera" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="lbl_telefono" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_email" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_cedula" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lbl_nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txt_email_alumno" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_nombre_alumno" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_codigoCarrera_alumno" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_telefono_alumno" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="txt_cedula_alumno" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="dc_fecha" min="-2" pref="166" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="lbl_codigoCarrera" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="btn_volver" min="-2" pref="46" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="tituloVentana" min="-2" max="-2" attributes="0"/>
                   </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txt_email_alumno" alignment="0" pref="166" max="32767" attributes="0"/>
-                  <Component id="txt_nombre_alumno" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txt_codigoCarrera_alumno" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txt_telefono_alumno" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="txt_cedula_alumno" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btn_limpiar" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btn_guardar" min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="dc_fecha" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -76,10 +73,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tituloVentana" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_volver" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="tituloVentana" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txt_cedula_alumno" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_cedula" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -109,12 +109,12 @@
                   <Component id="lbl_nacimiento" min="-2" max="-2" attributes="0"/>
                   <Component id="dc_fecha" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_guardar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="btn_limpiar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btn_guardar" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="btn_limpiar" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -161,6 +161,21 @@
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_guardar">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/Guardar.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+            <MatteColorBorder>
+              <Color PropertyName="color" blue="0" green="cc" red="33" type="rgb"/>
+            </MatteColorBorder>
+          </Border>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_guardarActionPerformed"/>
       </Events>
@@ -174,6 +189,21 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_limpiar">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/Limpiar.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+            <MatteColorBorder>
+              <Color PropertyName="color" blue="ac" green="b8" red="11" type="rgb"/>
+            </MatteColorBorder>
+          </Border>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarActionPerformed"/>
       </Events>
