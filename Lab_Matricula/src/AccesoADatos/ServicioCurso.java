@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 
@@ -44,6 +45,9 @@ public class ServicioCurso extends Servicio{
             boolean resultado = pstmt.execute();
             if (resultado == true) {
                 throw new NoDataException("No se realizo la insercion");
+            }else{
+                System.out.println("\nAgregación satisfactoria!");
+                JOptionPane.showMessageDialog(null, "Curso agregado correctamente!");
             }
             
         } catch (SQLException e) {
@@ -85,6 +89,7 @@ public class ServicioCurso extends Servicio{
             else
             {
                 System.out.println("\nModificación Satisfactoria!");
+                JOptionPane.showMessageDialog(null, "Modificación Satisfactoria!");
             }
         }
         catch (SQLException e)
@@ -127,7 +132,6 @@ public class ServicioCurso extends Servicio{
                     rs.getInt("creditos"),
                     rs.getInt("horas_semanales"));
                     coleccion.add(miCurso);
-                    //System.out.println(miCurso.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){
@@ -172,6 +176,7 @@ public class ServicioCurso extends Servicio{
                     throw new NoDataException("No se realizo el borrado");
                 }else{
                     System.out.println("\nEliminación Satisfactoria!");
+                    JOptionPane.showMessageDialog(null, "Eliminación Satisfactoria!");
                 }
             }catch (SQLException e){
                 throw new GlobalException("Sentencia no valida");

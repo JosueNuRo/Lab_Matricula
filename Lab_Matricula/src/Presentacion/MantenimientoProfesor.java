@@ -190,8 +190,10 @@ public class MantenimientoProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarProfesorActionPerformed
-        new FormularioProfesor().setVisible(true);
+        FormularioProfesor formulario = new FormularioProfesor();
+        formulario.setVisible(true);
         this.dispose();
+        formulario.identificadorDeAccion(2,profesor);
     }//GEN-LAST:event_btn_agregarProfesorActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed

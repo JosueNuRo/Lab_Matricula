@@ -192,8 +192,10 @@ public class MantenimientoCurso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCursoActionPerformed
-        new FormularioCurso().setVisible(true);
+        FormularioCurso formulario = new FormularioCurso();
+        formulario.setVisible(true);
         this.dispose();
+        formulario.identificadorDeAccion(2,curso);
     }//GEN-LAST:event_btn_agregarCursoActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed

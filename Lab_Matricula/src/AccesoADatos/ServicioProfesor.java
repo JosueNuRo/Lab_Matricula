@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.JOptionPane;
 
 public class ServicioProfesor extends Servicio{
     private static final String AGREGAR_PROFESOR = "call add_PROFESORES(?,?,?,?,?)";
@@ -39,14 +40,12 @@ public class ServicioProfesor extends Servicio{
             pstmt.setString(3,miProfesor.getTelefono_profesor());
             pstmt.setString(4,miProfesor.getEmail_profesor());
             pstmt.setString(5,miProfesor.getUsuario_num_ced());
-            int resultado = pstmt.executeUpdate();
-            if (resultado != 0)
-            {
-                throw new NoDataException("No se realizo la actualización");
-            }
-            else
-            {
-                System.out.println("\nModificación Satisfactoria!");
+            boolean resultado = pstmt.execute();
+            if (resultado == true){
+                throw new NoDataException("No se realizo la agregación");
+            }else{
+                System.out.println("\nAgregación satisfactoria!");
+                JOptionPane.showMessageDialog(null, "Profesor agregado correctamente!");
             }
         }
         catch (SQLException e)
@@ -82,11 +81,16 @@ public class ServicioProfesor extends Servicio{
             pstmt.setString(3,miProfesor.getTelefono_profesor());
             pstmt.setString(4,miProfesor.getEmail_profesor());
             pstmt.setString(5,miProfesor.getUsuario_num_ced());
-            boolean resultado = pstmt.execute();
-            if (resultado == true) {
-                throw new NoDataException("No se realizo la actualizacion");
+            int resultado = pstmt.executeUpdate();
+            if (resultado != 0)
+            {
+                throw new NoDataException("No se realizo la actualización");
             }
-            
+            else
+            {
+                System.out.println("\nModificación Satisfactoria!");
+                JOptionPane.showMessageDialog(null, "Modificación Satisfactoria!");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new GlobalException("Llave duplicada");
@@ -127,7 +131,6 @@ public class ServicioProfesor extends Servicio{
                     rs.getString("email_profesor"),
                     rs.getString("usuarios_num_cedula"));
                     coleccion.add(miProfesor);
-                    //System.out.println(miProfesor.toString() + "\n--------------------------------------");
                 }
         }
         catch (SQLException e){
@@ -172,6 +175,7 @@ public class ServicioProfesor extends Servicio{
                     throw new NoDataException("No se realizo el borrado");
                 }else{
                     System.out.println("\nEliminación Satisfactoria!");
+                    JOptionPane.showMessageDialog(null, "Eliminación Satisfactoria!");
                 }
             }catch (SQLException e){
                 throw new GlobalException("Sentencia no valida");
@@ -213,7 +217,6 @@ public class ServicioProfesor extends Servicio{
                 rs.getString("email_profesor"),
                 rs.getString("usuarios_num_cedula"));
                 coleccion.add(miProfesor);
-                //System.out.println(miProfesor.toString() + "\n--------------------------------------");
             }
         }catch (SQLException e){
             e.printStackTrace();

@@ -192,8 +192,10 @@ public class MantenimientoCarrera extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCarreraActionPerformed
-        new FormularioCarrera().setVisible(true);
+        FormularioCarrera formulario = new FormularioCarrera();
+        formulario.setVisible(true);
         this.dispose();
+        formulario.identificadorDeAccion(2,carrera);
     }//GEN-LAST:event_btn_agregarCarreraActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed

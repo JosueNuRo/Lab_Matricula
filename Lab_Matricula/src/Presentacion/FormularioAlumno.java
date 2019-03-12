@@ -262,8 +262,7 @@ public class FormularioAlumno extends javax.swing.JFrame {
             alumno.setNuevaFecha(fnacim);
             alumno.setUsuarios_num_ced(txt_cedula_alumno.getText());
             control.ingresarAlumno(alumno);    
-        }else if(identificador == 1){
-            
+        }else if(identificador == 1){ 
             alumno.setId_alumno(txt_cedula_alumno.getText());
             alumno.setNombre_alumno(txt_nombre_alumno.getText());
             alumno.setTelefono_alumno(txt_telefono_alumno.getText());

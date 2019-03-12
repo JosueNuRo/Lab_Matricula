@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 
@@ -44,10 +45,12 @@ public class ServicioAlumno extends Servicio{
             pstmt.setString(6,miAlumno.getCarreras_cod_carr());
             pstmt.setString(7,miAlumno.getUsuarios_num_ced());
             boolean resultado = pstmt.execute();
-            if (resultado == true) {
-                throw new NoDataException("No se realizo la insercion");
+            if (resultado == true){
+                throw new NoDataException("No se realizo la agregación");
+            }else{
+                System.out.println("\nAgregación satisfactoria!");
+                JOptionPane.showMessageDialog(null, "Alumno agregado correctamente!");
             }
-            
         } catch (SQLException e) {
             e.printStackTrace();
             throw new GlobalException("Llave duplicada");
@@ -86,6 +89,7 @@ public class ServicioAlumno extends Servicio{
                 throw new NoDataException("No se realizo la actualización");
             }else{
                 System.out.println("\nModificación Satisfactoria!");
+                JOptionPane.showMessageDialog(null, "Modificación Satisfactoria!");
             }
         }
         catch (SQLException e){
@@ -225,6 +229,7 @@ public class ServicioAlumno extends Servicio{
                     throw new NoDataException("No se realizo el borrado");
                 }else{
                     System.out.println("\nEliminación Satisfactoria!");
+                    JOptionPane.showMessageDialog(null, "Eliminación Satisfactoria!");
                 }
             }catch (SQLException e){
                 throw new GlobalException("Sentencia no valida");
