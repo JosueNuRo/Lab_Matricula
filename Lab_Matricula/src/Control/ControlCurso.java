@@ -28,7 +28,7 @@ public class ControlCurso {
         try {
             servicioCurso.agregarCurso(miCurso);
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -36,7 +36,7 @@ public class ControlCurso {
         try {
             servicioCurso.eliminarCurso(codigoCurso);
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -44,7 +44,7 @@ public class ControlCurso {
         try {
             servicioCurso.modificarCurso(miCurso);
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

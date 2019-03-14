@@ -27,9 +27,9 @@ public class ControlAlumno {
         try {
             servicioAlumno.agregarAlumno(miAlumno);
         } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlAlumno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -37,9 +37,9 @@ public class ControlAlumno {
         try {
             servicioAlumno.eliminarAlumno(idAlumno);
         } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlAlumno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -47,9 +47,9 @@ public class ControlAlumno {
         try {
             servicioAlumno.modificarAlumno(miAlumno);
         } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlAlumno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

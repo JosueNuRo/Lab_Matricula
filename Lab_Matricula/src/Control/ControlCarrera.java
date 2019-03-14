@@ -28,9 +28,9 @@ public class ControlCarrera {
         try {
             servicioCarrera.agregarCarrera(miCarrera);
         } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCarrera.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -38,9 +38,9 @@ public class ControlCarrera {
         try {
             servicioCarrera.eliminarCarrera(codigoCarrera);
         } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCarrera.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -48,9 +48,9 @@ public class ControlCarrera {
         try {
             servicioCarrera.modificarCarrera(miCarrera);
         } catch (GlobalException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCarrera.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlCarrera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

@@ -27,7 +27,7 @@ public class ControlProfesor {
         try {
             servicioProfesor.agregarProfesor(miProfesor);
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -35,7 +35,7 @@ public class ControlProfesor {
         try {
             servicioProfesor.eliminarProfesor(idProfesor);
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -43,7 +43,7 @@ public class ControlProfesor {
         try {
             servicioProfesor.modificarProfesor(miProfesor);
         } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(ControlConsola.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
