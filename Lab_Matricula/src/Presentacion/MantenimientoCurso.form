@@ -63,28 +63,30 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btn_volver" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="lbl_mantenimientoCursos" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btn_listarCurso" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="btn_borrarCurso" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="lbl_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_buscar_curso" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="btn_listarCurso" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="lbl_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_buscar_curso" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="btn_agregarCurso" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="btn_modificarCurso" min="-2" pref="45" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="btn_agregarCurso" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="btn_modificarCurso" min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btn_borrarCurso" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="91" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="180" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
