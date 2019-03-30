@@ -52,6 +52,7 @@ public class MenuMatricula extends JFrame {
         btn_mantenimientoProfesores = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btn_cerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,7 +80,7 @@ public class MenuMatricula extends JFrame {
                 .addComponent(boton_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_titulo)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +112,7 @@ public class MenuMatricula extends JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -129,6 +130,7 @@ public class MenuMatricula extends JFrame {
         btn_mantenimientoCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Mantenimiento.png"))); // NOI18N
         btn_mantenimientoCarrera.setText("Carreras");
         btn_mantenimientoCarrera.setBorder(null);
+        btn_mantenimientoCarrera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_mantenimientoCarrera.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_mantenimientoCarrera.setIconTextGap(20);
         btn_mantenimientoCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +144,7 @@ public class MenuMatricula extends JFrame {
         btn_mantenimientoAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Mantenimiento.png"))); // NOI18N
         btn_mantenimientoAlumno.setText("Alumnos");
         btn_mantenimientoAlumno.setBorder(null);
+        btn_mantenimientoAlumno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_mantenimientoAlumno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_mantenimientoAlumno.setIconTextGap(20);
         btn_mantenimientoAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +159,7 @@ public class MenuMatricula extends JFrame {
         btn_mantenimientoCursos.setText("Cursos");
         btn_mantenimientoCursos.setToolTipText("");
         btn_mantenimientoCursos.setBorder(null);
+        btn_mantenimientoCursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_mantenimientoCursos.setDisabledIcon(null);
         btn_mantenimientoCursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_mantenimientoCursos.setIconTextGap(20);
@@ -170,6 +174,7 @@ public class MenuMatricula extends JFrame {
         btn_mantenimientoProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Mantenimiento.png"))); // NOI18N
         btn_mantenimientoProfesores.setText("Profesores");
         btn_mantenimientoProfesores.setBorder(null);
+        btn_mantenimientoProfesores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_mantenimientoProfesores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_mantenimientoProfesores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_mantenimientoProfesores.setIconTextGap(20);
@@ -184,23 +189,38 @@ public class MenuMatricula extends JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(17, 184, 172));
 
+        btn_cerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cerrarSesion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_cerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btn_cerrarSesion.setText("Cerrar Sesión");
+        btn_cerrarSesion.setBorder(null);
+        btn_cerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_cerrarSesion.setIconTextGap(20);
+        btn_cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cerrarSesionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_izquierdoLayout = new javax.swing.GroupLayout(panel_izquierdo);
         panel_izquierdo.setLayout(panel_izquierdoLayout);
         panel_izquierdoLayout.setHorizontalGroup(
             panel_izquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_izquierdoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panel_izquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                    .addComponent(btn_mantenimientoCursos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_mantenimientoAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(panel_izquierdoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_izquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_izquierdoLayout.createSequentialGroup()
+                        .addGroup(panel_izquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_mantenimientoCursos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_mantenimientoAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panel_izquierdoLayout.setVerticalGroup(
@@ -211,7 +231,7 @@ public class MenuMatricula extends JFrame {
                 .addComponent(jLabel3)
                 .addGap(4, 4, 4)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_mantenimientoCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_mantenimientoCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,8 +239,12 @@ public class MenuMatricula extends JFrame {
                 .addComponent(btn_mantenimientoProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(btn_mantenimientoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        btn_cerrarSesion.getAccessibleContext().setAccessibleName("CerrarSesion");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,7 +252,7 @@ public class MenuMatricula extends JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel_izquierdo, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(panel_izquierdo, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -236,7 +260,7 @@ public class MenuMatricula extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panel_izquierdo, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE))
         );
 
         pack();
@@ -297,6 +321,12 @@ public class MenuMatricula extends JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_mantenimientoAlumnoActionPerformed
 
+    private void btn_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrarSesionActionPerformed
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_cerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -337,6 +367,7 @@ public class MenuMatricula extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_menu;
+    private javax.swing.JButton btn_cerrarSesion;
     private javax.swing.JButton btn_mantenimientoAlumno;
     private javax.swing.JButton btn_mantenimientoCarrera;
     private javax.swing.JButton btn_mantenimientoCursos;
