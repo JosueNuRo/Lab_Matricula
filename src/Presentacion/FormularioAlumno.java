@@ -10,10 +10,8 @@ import AccesoADatos.NoDataException;
 import Control.ControlAlumno;
 import LogicaDeNegocio.Alumno;
 import java.awt.Color;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.DatePicker;
 import javax.swing.JOptionPane;
 
 import java.text.SimpleDateFormat;
