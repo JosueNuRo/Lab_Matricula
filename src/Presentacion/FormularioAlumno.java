@@ -22,12 +22,13 @@ import java.util.Date;
  * @author josue
  */
 public class FormularioAlumno extends javax.swing.JFrame {
-
-    ControlAlumno control = new ControlAlumno();
-    Alumno alumno = new Alumno();
+    ControlAlumno control;
+    Alumno alumno;
     int identificador = 0;
     
     public FormularioAlumno() {
+        this.control = ControlAlumno.getINSTANCE();
+        this.alumno = Alumno.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

@@ -20,12 +20,13 @@ import javax.swing.JOptionPane;
  * @author josue
  */
 public class FormularioCarrera extends javax.swing.JFrame {
-
-    ControlCarrera control = new ControlCarrera();
-    Carrera carrera = new Carrera();
+    ControlCarrera control;
+    Carrera carrera;
     int identificador = 0;
     
     public FormularioCarrera() {
+        this.control = ControlCarrera.getINSTANCE();
+        this.carrera = Carrera.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

@@ -18,11 +18,13 @@ import javax.swing.JOptionPane;
 
 
 public class FormularioCurso extends javax.swing.JFrame {
-    ControlCurso control = new ControlCurso();
-    Curso curso = new Curso();
+    ControlCurso control;
+    Curso curso;
     int identificador = 0;
     
     public FormularioCurso() {
+        this.control = ControlCurso.getINSTANCE();
+        this.curso = Curso.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

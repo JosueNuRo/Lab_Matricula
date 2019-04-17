@@ -15,13 +15,23 @@ import java.util.logging.Logger;
 
 
 public class ControlProfesor {
-    ServicioProfesor servicioProfesor = new ServicioProfesor();
-    Profesor profesor = new Profesor();
+    //Singleton
+    private static ControlProfesor INSTANCE = null;
+    
+    ServicioProfesor servicioProfesor;
+    Profesor profesor;
     boolean consulta = true;
     
-    public ControlProfesor() {
-        this.servicioProfesor = new ServicioProfesor();
-        this.profesor = new Profesor();
+    private ControlProfesor() {
+        this.servicioProfesor = ServicioProfesor.getINSTANCE();
+        this.profesor = Profesor.getINSTANCE();
+    }
+    
+    public static ControlProfesor getINSTANCE() {
+        if(INSTANCE == null){
+            INSTANCE = new ControlProfesor();
+        }
+        return INSTANCE;
     }
     
     public boolean ingresarProfesor(Profesor miProfesor){      

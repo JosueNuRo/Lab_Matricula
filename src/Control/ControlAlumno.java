@@ -15,13 +15,23 @@ import java.util.logging.Logger;
 
 
 public class ControlAlumno {
-    ServicioAlumno servicioAlumno = new ServicioAlumno();
-    Alumno alumno = new Alumno();
+    //Singleton
+    private static ControlAlumno INSTANCE = null;
+    
+    ServicioAlumno servicioAlumno;
+    Alumno alumno;
     boolean consulta = true;
 
-    public ControlAlumno() {
-        this.servicioAlumno = new ServicioAlumno();
-        this.alumno = new Alumno();
+    private ControlAlumno() {
+        this.servicioAlumno = ServicioAlumno.getINSTANCE();
+        this.alumno = Alumno.getINSTANCE();
+    }
+    
+    public static ControlAlumno getINSTANCE() {
+        if(INSTANCE == null){
+            INSTANCE = new ControlAlumno();
+        }
+        return INSTANCE;
     }
     
     public boolean ingresarAlumno(Alumno miAlumno){      

@@ -20,11 +20,13 @@ import javax.swing.JOptionPane;
  */
 public class FormularioProfesor extends javax.swing.JFrame {
 
-    ControlProfesor control = new ControlProfesor();
-    Profesor profesor = new Profesor();
+    ControlProfesor control;
+    Profesor profesor;
     int identificador = 0;
     
     public FormularioProfesor() {
+        this.control = ControlProfesor.getINSTANCE();
+        this.profesor = Profesor.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

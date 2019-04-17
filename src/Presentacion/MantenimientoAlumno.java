@@ -23,17 +23,21 @@ import javax.swing.table.DefaultTableModel;
  * @author Yenny
  */
 public class MantenimientoAlumno extends javax.swing.JFrame {
-    ControlAlumno control = new ControlAlumno();
+    ControlAlumno control;
+    Alumno alumno;
     String idBuscar = "";
     DefaultTableModel tablaAlumno = new DefaultTableModel();  
-    Alumno alumno = new Alumno();
     int seleccion;
     ImageIcon imagen;
     Icon icono;
     /**
      * Creates new form MantenimientoAlumno
+     * @throws AccesoADatos.GlobalException
+     * @throws AccesoADatos.NoDataException
      */
     public MantenimientoAlumno() throws GlobalException, NoDataException {
+        this.control = ControlAlumno.getINSTANCE();
+        this.alumno = Alumno.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

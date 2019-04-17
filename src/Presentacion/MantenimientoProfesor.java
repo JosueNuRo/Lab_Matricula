@@ -20,13 +20,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Yenny
  */
 public class MantenimientoProfesor extends javax.swing.JFrame {
-    String idBuscar = "";
-    Profesor profesor = new Profesor();
-    ControlProfesor control = new ControlProfesor();
+    Profesor profesor;
+    ControlProfesor control;
     DefaultTableModel tablaProfesor= new DefaultTableModel(); 
     int seleccion;
+    String idBuscar = "";
     
     public MantenimientoProfesor() throws GlobalException, NoDataException {
+        this.profesor = Profesor.getINSTANCE();
+        this.control = ControlProfesor.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

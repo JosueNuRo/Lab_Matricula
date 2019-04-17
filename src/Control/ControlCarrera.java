@@ -16,13 +16,23 @@ import java.util.logging.Logger;
 
 
 public class ControlCarrera {
-    ServicioCarrera servicioCarrera = new ServicioCarrera();
-    Carrera carrera = new Carrera();
+    //Singleton
+    private static ControlCarrera INSTANCE = null;
+    
+    ServicioCarrera servicioCarrera;
+    Carrera carrera;
     boolean consulta = true;
     
-    public ControlCarrera() {
-        this.servicioCarrera = new ServicioCarrera();
-        this.carrera = new Carrera();
+    private ControlCarrera() {
+        this.servicioCarrera = ServicioCarrera.getINSTANCE();
+        this.carrera = Carrera.getINSTANCE();
+    }
+    
+    public static ControlCarrera getINSTANCE() {
+        if(INSTANCE == null){
+            INSTANCE = new ControlCarrera();
+        }
+        return INSTANCE;
     }
     
     public boolean ingresarCarrera(Carrera miCarrera) throws SQLException{      

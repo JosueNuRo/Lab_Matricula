@@ -12,12 +12,12 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-    ControlLogin control = new ControlLogin();
-    
+    ControlLogin control;
     /**
      * Creates new form Login
      */
     public Login() {
+        this.control = ControlLogin.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

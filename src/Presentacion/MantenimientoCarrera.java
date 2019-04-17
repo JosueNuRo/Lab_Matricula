@@ -17,14 +17,16 @@ import javax.swing.table.DefaultTableModel;
 
 public class MantenimientoCarrera extends javax.swing.JFrame {
 
-    ControlCarrera control = new ControlCarrera();
+    ControlCarrera control;
+    Carrera carrera;
     DefaultTableModel tablaCarrera= new DefaultTableModel();
-    Carrera carrera = new Carrera();
     int seleccion;
     String idBuscar = "";
 
     
     public MantenimientoCarrera() throws GlobalException, NoDataException {
+        this.control = ControlCarrera.getINSTANCE();
+        this.carrera = Carrera.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

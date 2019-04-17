@@ -20,13 +20,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Yenny
  */
 public class MantenimientoCurso extends javax.swing.JFrame {
-    Curso curso = new Curso();
-    ControlCurso control = new ControlCurso();
+    Curso curso;
+    ControlCurso control;
     DefaultTableModel tablaCurso= new DefaultTableModel(); 
     String idBuscar = "";
     int seleccion;
     
     public MantenimientoCurso() throws GlobalException, NoDataException {
+        this.curso = Curso.getINSTANCE();
+        this.control = ControlCurso.getINSTANCE();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

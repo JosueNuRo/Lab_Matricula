@@ -18,13 +18,23 @@ import java.util.logging.Logger;
  * @author Yenny
  */
 public class ControlLogin {
-    ServicioLogin servicioLogin = new ServicioLogin();
-    Login login = new Login();
+    //Singleton
+    private static ControlLogin INSTANCE = null;
+    
+    ServicioLogin servicioLogin;
+    Login login;
     boolean consulta;
 
-    public ControlLogin() {
-        this.servicioLogin = new ServicioLogin();
-        this.login = new Login();
+    private ControlLogin() {
+        this.servicioLogin = ServicioLogin.getINSTANCE();
+        this.login = Login.getINSTANCE();
+    }
+    
+    public static ControlLogin getINSTANCE() {
+        if(INSTANCE == null){
+            INSTANCE = new ControlLogin();
+        }
+        return INSTANCE;
     }
     
     public boolean login(String usuario, String contrasenna) throws SQLException{      

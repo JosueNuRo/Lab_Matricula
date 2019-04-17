@@ -16,13 +16,23 @@ import java.util.logging.Logger;
 
 
 public class ControlCurso {
-    ServicioCurso servicioCurso = new ServicioCurso();
-    Curso curso = new Curso();
+    //Singleton
+    private static ControlCurso INSTANCE = null;
+    
+    ServicioCurso servicioCurso;
+    Curso curso;
     boolean consulta = true;
     
-    public ControlCurso() {
-        this.servicioCurso = new ServicioCurso();
-        this.curso = new Curso();
+    private ControlCurso() {
+        this.servicioCurso = ServicioCurso.getINSTANCE();
+        this.curso = Curso.getINSTANCE();
+    }
+    
+    public static ControlCurso getINSTANCE() {
+        if(INSTANCE == null){
+            INSTANCE = new ControlCurso();
+        }
+        return INSTANCE;
     }
     
     public boolean ingresarCurso(Curso miCurso) throws SQLException{      
